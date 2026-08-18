@@ -11,7 +11,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="FOURYOU">
 <meta property="og:title" content="FOURYOU — Software para lo que pasa entre dos.">
-<meta property="og:description" content="La casa de las cuatro apps: 4U Sync, 4U Spark, 4U Orbit y una cuarta luz próximamente. Privacidad como mecánica, pago único, sin trucos.">
+<meta property="og:description" content="Cuatro apps, un mismo carácter: 4U Sync, 4U Spark, 4U Orbit y una cuarta luz próximamente. Privacidad como mecánica, pago único, sin trucos.">
 <meta property="og:locale" content="es_MX">
 <meta property="og:locale:alternate" content="en_IE">
 <meta property="og:url" content="https://fouryou.io/apps">
@@ -285,10 +285,12 @@ svg{display:block}
 .stage-body{position:relative;z-index:1;display:grid}
 .sp-panel{grid-area:1/1;display:flex;align-items:center;gap:clamp(24px,4vw,64px);padding:clamp(24px,4vw,48px) clamp(22px,4vw,56px);opacity:0;visibility:hidden;transition:opacity .45s ease,visibility 0s .45s}
 .sp-panel.is-on{opacity:1;visibility:visible;transition:opacity .55s ease .08s,visibility 0s}
-.sp-panel .sp-sym{translate:0 12px;scale:.96;transition:translate .7s var(--ease),scale .7s var(--ease)}
-.sp-panel.is-on .sp-sym{translate:0 0;scale:1}
-.sp-panel .sp-copy>*{translate:0 12px;transition:translate .6s var(--ease)}
-.sp-panel.is-on .sp-copy>*{translate:0 0}
+.sp-panel .sp-sym{translate:0 14px;scale:.92;rotate:-6deg;transition:translate .8s var(--ease),scale .8s var(--ease),rotate .8s var(--ease)}
+.sp-panel.is-on .sp-sym{translate:0 0;scale:1;rotate:0deg}
+.sp-panel .sp-copy>*{translate:0 12px;opacity:0;transition:translate .6s var(--ease),opacity .5s ease}
+.sp-panel.is-on .sp-copy>*{translate:0 0;opacity:1}
+.stage-body::after{content:"";position:absolute;top:0;bottom:0;width:30%;left:0;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.04) 50%,transparent 70%);transform:translateX(-120%);pointer-events:none}
+.stage.is-swap .stage-body::after{animation:fyBeam 1.1s var(--ease-io) both}
 .sp-panel.is-on .sp-copy>*:nth-child(2){transition-delay:.05s}.sp-panel.is-on .sp-copy>*:nth-child(3){transition-delay:.1s}.sp-panel.is-on .sp-copy>*:nth-child(4){transition-delay:.15s}.sp-panel.is-on .sp-copy>*:nth-child(5){transition-delay:.2s}
 .s-sync{--hue-rgb:224,90,114;--tbg:var(--sync-bg);--ink:var(--sync-ink)}.s-spark{--hue-rgb:47,130,240;--tbg:var(--spark-bg);--ink:var(--spark-ink)}.s-orbit{--hue-rgb:168,127,219;--tbg:var(--orbit-bg);--ink:var(--orbit-ink)}.s-gold{--hue-rgb:212,160,23;--tbg:var(--gold-bg);--ink:var(--gold-ink2)}
 .sp-sym{position:relative;flex:none;width:clamp(140px,19vw,220px);aspect-ratio:1;display:grid;place-items:center;animation:fyTileFloat 7s ease-in-out infinite}
@@ -320,7 +322,7 @@ svg{display:block}
 .sp-tab .tn .a{color:var(--ink)}
 .sp-tab .tv{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);white-space:nowrap}
 .sp-tab .bar{position:absolute;left:0;right:0;top:-1px;height:2px;background:rgb(var(--hue-rgb));transform:scaleX(0);transform-origin:left}
-.sp-tab.is-on .bar{animation:fyScaleX 5.5s linear both}
+.sp-tab.is-on .bar{animation:fyScaleX 4s linear both}
 .stage.is-paused .sp-tab.is-on .bar{animation-play-state:paused}
 .stage.is-manual .sp-tab.is-on .bar{animation:none;transform:scaleX(1);opacity:.6}
 .stage-line{left:0;right:0;top:auto;bottom:0;height:1px;overflow:visible;transform:none;animation:none;background:linear-gradient(90deg,transparent,rgba(224,90,114,.55),rgba(47,130,240,.55),rgba(168,127,219,.55),rgba(212,160,23,.55),transparent)}
@@ -508,7 +510,9 @@ svg{display:block}
 .timer .t{font-family:var(--f-mono);font-size:10.5px;color:var(--spark-5)}
 .timer .ring{animation:fyTimer 60s linear forwards;animation-play-state:paused}
 .timer.is-run .ring{animation-play-state:running}
-.qtext{font-family:var(--f-display);font-weight:600;letter-spacing:-0.01em;font-size:19px;line-height:1.3;color:#EAF2FF;min-height:74px}
+.qmid{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+.qico{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;color:var(--spark-5);background:rgba(179,208,255,.1);border:1px solid rgba(179,208,255,.28)}
+.qtext{font-family:var(--f-display);font-weight:600;letter-spacing:-0.01em;font-size:19px;line-height:1.3;color:#EAF2FF;min-height:74px;text-wrap:balance}
 .qfoot{display:flex;justify-content:space-between;align-items:center;gap:8px}
 .lvls{display:flex;gap:6px}
 .lvl{all:unset;cursor:pointer;font-family:var(--f-mono);font-size:10px;color:var(--dim);border:1px solid var(--line2);border-radius:6px;padding:3px 8px;transition:color .3s ease,border-color .3s ease,scale var(--dur-press) var(--ease-out);letter-spacing:.06em}
@@ -790,7 +794,7 @@ svg{display:block}
 <section class="hero wrap" data-hue="var(--mut)" data-nav="">
   <div class="hero-top">
     <div class="hero-h">
-      <div class="kicker"><span data-l="es">La casa de las cuatro apps</span><span data-l="en">The house of the four apps</span></div>
+      <div class="kicker"><span data-l="es">Cuatro apps · un mismo carácter</span><span data-l="en">Four apps · one character</span></div>
       <h1 class="display h1" id="fy-h1">
         <span data-l="es" data-title="main"><span class="ln"><span>Software para lo</span></span><span class="ln"><span>que pasa entre dos.</span></span></span>
         <span data-l="en" data-title="main"><span class="ln"><span>Software for what</span></span><span class="ln"><span>happens between two.</span></span></span>
@@ -948,7 +952,7 @@ svg{display:block}
                 <span class="qcat" id="sp-cat"><span data-l="es">Fiesta · Pregunta</span><span data-l="en">Party · Question</span></span>
                 <span class="timer" id="sp-timer" aria-label="Un minuto por pregunta" data-al-es="Un minuto por pregunta" data-al-en="One minute per question"><svg width="44" height="44" viewBox="0 0 44 44"><circle cx="22" cy="22" r="18" stroke="rgba(111,168,255,.25)" stroke-width="3" fill="none"/><circle class="ring" id="sp-ring" cx="22" cy="22" r="18" stroke="#6FA8FF" stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray="113" stroke-dashoffset="0" transform="rotate(-90 22 22)"/></svg><span class="t" id="sp-time">1:00</span></span>
               </div>
-              <div class="qtext" id="sp-q"><span data-l="es">¿Quién canta más fuerte la letra que peor se sabe?</span><span data-l="en">Who sings the loudest the lyrics they know the worst?</span></div>
+              <div class="qmid"><span class="qico" id="sp-ico" aria-hidden="true"></span><div class="qtext" id="sp-q"><span data-l="es">¿Quién canta más fuerte la letra que peor se sabe?</span><span data-l="en">Who sings the loudest the lyrics they know the worst?</span></div></div>
               <div class="qfoot">
                 <div class="lvls" role="radiogroup" aria-label="Nivel" id="sp-lvls" data-al-es="Nivel" data-al-en="Level">
                   <button type="button" class="lvl" role="radio" aria-checked="true" data-lvl="0"><span data-l="es">Suave</span><span data-l="en">Mild</span></button>
@@ -1296,12 +1300,13 @@ svg{display:block}
     var st = $('#fy-stage'); if (!st) return;
     var tabs = $$('.sp-tab', st), panels = $$('.sp-panel', st), cur = 0, iv = null, manual = false;
     function show(i, user) {
-      cur = i; st.setAttribute('data-on', String(i));
+      cur = i; st.setAttribute('data-on', String(i)); st.classList.remove('is-swap'); void st.offsetWidth; st.classList.add('is-swap');
       tabs.forEach(function (t, k) { var on = k === i; t.classList.toggle('is-on', on); t.setAttribute('aria-selected', String(on)); t.setAttribute('tabindex', on ? '0' : '-1'); });
       panels.forEach(function (p, k) { p.classList.toggle('is-on', k === i); });
-      if (user) { manual = true; st.classList.add('is-manual'); stop(); }
+      if (user) { stop(); if (resumeTO) clearTimeout(resumeTO); resumeTO = setTimeout(function () { start(); }, 12000); }
     }
-    function start() { if (manual || RM || iv) return; iv = setInterval(function () { show((cur + 1) % tabs.length, false); }, 5500); }
+    var resumeTO = null;
+    function start() { if (RM || iv) return; iv = setInterval(function () { show((cur + 1) % tabs.length, false); }, 4000); }
     function stop() { if (iv) { clearInterval(iv); iv = null; } }
     tabs.forEach(function (t, i) {
       t.addEventListener('click', function () { show(i, true); });
@@ -1311,7 +1316,6 @@ svg{display:block}
         if (n === null) return; e.preventDefault(); show(n, true); tabs[n].focus();
       });
     });
-    if (FINE) { st.addEventListener('pointerenter', function () { st.classList.add('is-paused'); stop(); }); st.addEventListener('pointerleave', function () { st.classList.remove('is-paused'); start(); }); }
     onceVisible(st, 0.3, start, stop);
     document.addEventListener('visibilitychange', function () { if (document.hidden) stop(); else start(); });
   })();
@@ -1488,12 +1492,13 @@ svg{display:block}
   (function () {
     var card = $('#sp-card'); if (!card) return;
     var QS = [
-      { cat: ['Fiesta · Pregunta', 'Party · Question'], es: '¿Quién canta más fuerte la letra que peor se sabe?', en: 'Who sings the loudest the lyrics they know the worst?' },
-      { cat: ['Rompehielos · Pregunta', 'Icebreaker · Question'], es: 'Sin editarlo antes: ¿con qué nombre exacto tienes guardada a tu mamá en el teléfono?', en: 'No editing first: what’s the exact name you have your mom saved under in your phone?' },
-      { cat: ['Pareja · Pregunta', 'Couple · Question'], es: '¿Qué hacen mis manos cuando me pongo nervioso?', en: 'What do my hands do when I get nervous?' }
+      { ico: '<path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><path d="M12 19v3"/>', cat: ['Fiesta · Pregunta', 'Party · Question'], es: '¿Quién canta más fuerte la letra que peor se sabe?', en: 'Who sings the loudest the lyrics they know the worst?' },
+      { ico: '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>', cat: ['Rompehielos · Pregunta', 'Icebreaker · Question'], es: 'Sin editarlo antes: ¿con qué nombre exacto tienes guardada a tu mamá en el teléfono?', en: 'No editing first: what’s the exact name you have your mom saved under in your phone?' },
+      { ico: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>', cat: ['Pareja · Pregunta', 'Couple · Question'], es: '¿Qué hacen mis manos cuando me pongo nervioso?', en: 'What do my hands do when I get nervous?' }
     ];
     var wrap = $('#sp-wrap'), cat = $('#sp-cat'), q = $('#sp-q'), ring = $('#sp-ring'), timer = $('#sp-timer'), time = $('#sp-time'), pass = $('#sp-pass'), heat = $('#sp-heat');
     var qi = 0, secs = 60, iv = null, visible = false, started = false, ended = false, busy = false, advTO = null, used = false, hintTO = null, plays = 0;
+    (function(){ var ic = $('#sp-ico'); if (ic) ic.innerHTML = '<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">' + QS[0].ico + '</svg>'; })();
     function stopHint() { wrap.classList.remove('is-hinting'); if (hintTO) { clearTimeout(hintTO); hintTO = null; } }
     function startHint() { if (used || RM || wrap.classList.contains('is-hinting')) return; wrap.classList.add('is-hinting'); }
 
@@ -1528,6 +1533,7 @@ svg{display:block}
       setTimeout(function () {
         qi = next; var d = QS[qi];
         setText(cat, d.cat[0], d.cat[1]); setText(q, d.es, d.en);
+        var ic = $('#sp-ico'); if (ic) ic.innerHTML = '<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">' + d.ico + '</svg>';
         card.style.transition = 'none'; card.style.transform = 'translateX(' + (-out * 84) + 'px) rotate(' + (-out * 2) + 'deg)';
         void card.offsetWidth;
         card.style.transition = RM ? 'none' : 'transform .42s ' + EASE_OUT + ', opacity .32s ease';
