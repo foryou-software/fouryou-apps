@@ -204,7 +204,7 @@ svg{display:block}
 
 /* ---------- hero ---------- */
 .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding-top:140px;padding-bottom:72px}
-.hero-top{display:flex;flex-wrap:wrap;gap:40px clamp(40px,6vw,96px);align-items:flex-end;margin-bottom:clamp(56px,9vh,96px)}
+.hero-top{display:flex;flex-wrap:wrap;gap:40px clamp(40px,6vw,96px);align-items:flex-end;margin-bottom:clamp(36px,6vh,64px)}
 .hero-h{flex:1.5 1 560px;min-width:min(560px,100%);container-type:inline-size}
 .hero-h .kicker{margin-bottom:30px;animation:fyFade .8s ease both}
 .h1{font-size:clamp(44px,6.2vw,92px);font-size:clamp(44px,min(6.8vw,9.6cqi),100px);letter-spacing:-0.025em;line-height:1.01}
@@ -272,7 +272,69 @@ svg{display:block}
   .tile-orbit:hover .dot{animation-duration:3.2s}
   .tile-gold:hover .tease{filter:blur(16px)}
 }
-.hero-foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px;margin-top:44px;animation:fyFade 1s ease 1.1s both}
+.hero-foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px;margin-top:32px;animation:fyFade 1s ease 1.1s both}
+/* ---------- escenario: una app a la vez ---------- */
+.stage{position:relative;border:1px solid var(--line2);border-radius:26px;overflow:clip;background:var(--surface);animation:fyPop .9s var(--ease) .55s both;isolation:isolate}
+.stage-bg{position:absolute;inset:0;z-index:0;pointer-events:none}
+.stage-bg i{position:absolute;inset:0;opacity:0;transition:opacity .8s ease}
+.stage-bg .bg-sync{background:radial-gradient(900px 460px at 20% 55%,rgba(224,90,114,calc(.24*var(--glow-a))),transparent 62%)}
+.stage-bg .bg-spark{background:radial-gradient(900px 460px at 20% 55%,rgba(47,130,240,calc(.24*var(--glow-a))),transparent 62%)}
+.stage-bg .bg-orbit{background:radial-gradient(900px 460px at 20% 55%,rgba(168,127,219,calc(.24*var(--glow-a))),transparent 62%)}
+.stage-bg .bg-gold{background:radial-gradient(900px 460px at 20% 55%,rgba(212,160,23,calc(.2*var(--glow-a))),transparent 62%)}
+.stage[data-on="0"] .bg-sync,.stage[data-on="1"] .bg-spark,.stage[data-on="2"] .bg-orbit,.stage[data-on="3"] .bg-gold{opacity:1}
+.stage-body{position:relative;z-index:1;display:grid}
+.sp-panel{grid-area:1/1;display:flex;align-items:center;gap:clamp(24px,4vw,64px);padding:clamp(24px,4vw,48px) clamp(22px,4vw,56px);opacity:0;visibility:hidden;transition:opacity .45s ease,visibility 0s .45s}
+.sp-panel.is-on{opacity:1;visibility:visible;transition:opacity .55s ease .08s,visibility 0s}
+.sp-panel .sp-sym{translate:0 12px;scale:.96;transition:translate .7s var(--ease),scale .7s var(--ease)}
+.sp-panel.is-on .sp-sym{translate:0 0;scale:1}
+.sp-panel .sp-copy>*{translate:0 12px;transition:translate .6s var(--ease)}
+.sp-panel.is-on .sp-copy>*{translate:0 0}
+.sp-panel.is-on .sp-copy>*:nth-child(2){transition-delay:.05s}.sp-panel.is-on .sp-copy>*:nth-child(3){transition-delay:.1s}.sp-panel.is-on .sp-copy>*:nth-child(4){transition-delay:.15s}.sp-panel.is-on .sp-copy>*:nth-child(5){transition-delay:.2s}
+.s-sync{--hue-rgb:224,90,114;--tbg:var(--sync-bg);--ink:var(--sync-ink)}.s-spark{--hue-rgb:47,130,240;--tbg:var(--spark-bg);--ink:var(--spark-ink)}.s-orbit{--hue-rgb:168,127,219;--tbg:var(--orbit-bg);--ink:var(--orbit-ink)}.s-gold{--hue-rgb:212,160,23;--tbg:var(--gold-bg);--ink:var(--gold-ink2)}
+.sp-sym{position:relative;flex:none;width:clamp(140px,19vw,220px);aspect-ratio:1;display:grid;place-items:center;animation:fyTileFloat 7s ease-in-out infinite}
+.sp-halo{position:absolute;inset:-16%;background:radial-gradient(closest-side,rgba(var(--hue-rgb),calc(.36*var(--glow-a))),transparent 70%);animation:fyGlow 6s ease-in-out infinite}
+.sp-sq{position:relative;width:100%;height:100%;border-radius:17%;background:var(--tbg);border:1px solid rgba(var(--hue-rgb),.36);display:grid;place-items:center;box-shadow:0 0 70px rgba(var(--hue-rgb),calc(.24*var(--glow-a)))}
+.sp-sq>svg,.sp-sq .tease{width:64%;height:64%}
+.sp-sq .tease{display:grid;place-items:center}
+.sp-sq .tease svg{width:100%;height:100%}
+.sp-copy{display:flex;flex-direction:column;gap:12px;min-width:0}
+.sp-kicker{font-family:var(--f-mono);font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--ink)}
+.sp-wm{font-size:clamp(26px,3.2vw,42px)}
+.sp-wm .a{color:var(--ink)}
+.s-gold .blur{filter:blur(9px);opacity:.55}
+.sp-frase{font-family:var(--f-display);font-weight:700;letter-spacing:-0.02em;font-size:clamp(20px,2.4vw,32px);line-height:1.15;margin:0;max-width:22ch;text-wrap:balance}
+.sp-sub{color:var(--mut);font-size:15px;line-height:1.6;margin:0;max-width:44ch;text-wrap:pretty}
+.sp-link{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--txt);margin-top:6px;border-bottom:1px solid var(--line3);padding-bottom:2px;align-self:flex-start;transition:color .3s ease,border-color .3s ease}
+.sp-link svg{transition:translate .3s var(--ease)}
+.sp-link:hover{color:var(--ink);border-color:currentColor}
+.sp-link:hover svg{translate:4px 0}
+.stage-dock{position:relative;z-index:1;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line2)}
+.sp-tab{all:unset;box-sizing:border-box;cursor:pointer;position:relative;display:flex;align-items:center;gap:12px;padding:14px clamp(12px,2vw,24px);min-height:70px;color:var(--mut);transition:color .3s ease,background-color .3s ease}
+.sp-tab+.sp-tab{border-left:1px solid var(--line)}
+.sp-tab:hover{background:rgba(var(--hue-rgb),.06)}
+.sp-tab:focus-visible{outline:2px solid var(--txt);outline-offset:-3px;border-radius:8px}
+.sp-tab .sq{width:42px;height:42px;border-radius:12px;background:var(--tbg);border:1px solid rgba(var(--hue-rgb),.3);display:grid;place-items:center;flex:none;transition:box-shadow .4s ease,border-color .4s ease}
+.sp-tab.is-on .sq{box-shadow:0 0 28px rgba(var(--hue-rgb),calc(.4*var(--glow-a)));border-color:rgba(var(--hue-rgb),.65)}
+.sp-tab .txt{display:flex;flex-direction:column;gap:3px;min-width:0}
+.sp-tab .tn{font-family:var(--f-display);font-weight:600;font-size:14px;color:var(--txt);white-space:nowrap}
+.sp-tab .tn .a{color:var(--ink)}
+.sp-tab .tv{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);white-space:nowrap}
+.sp-tab .bar{position:absolute;left:0;right:0;top:-1px;height:2px;background:rgb(var(--hue-rgb));transform:scaleX(0);transform-origin:left}
+.sp-tab.is-on .bar{animation:fyScaleX 5.5s linear both}
+.stage.is-paused .sp-tab.is-on .bar{animation-play-state:paused}
+.stage.is-manual .sp-tab.is-on .bar{animation:none;transform:scaleX(1);opacity:.6}
+.stage-line{left:0;right:0;top:auto;bottom:0;height:1px;overflow:visible;transform:none;animation:none;background:linear-gradient(90deg,transparent,rgba(224,90,114,.55),rgba(47,130,240,.55),rgba(168,127,219,.55),rgba(212,160,23,.55),transparent)}
+.stage-line::before,.stage-line::after{display:none}
+@media (max-width:760px){
+  .sp-panel{flex-direction:column;align-items:flex-start;gap:18px;padding:22px 20px 24px}
+  .sp-sym{width:104px}
+  .sp-tab{flex-direction:column;align-items:center;gap:8px;padding:12px 6px;text-align:center;min-height:0}
+  .sp-tab .tv{display:none}
+  .sp-tab .tn{font-size:12px}
+  .sp-tab .sq{width:38px;height:38px}
+  .hero{padding-top:100px}
+}
+@media (max-width:400px){.sp-tab .tn{display:none}}
 .hero-foot p{font-size:13.5px;color:var(--mut);margin:0}
 .cue{display:flex;align-items:center;gap:12px;font-family:var(--f-mono);font-size:10px;letter-spacing:.24em;color:var(--dim);text-transform:uppercase}
 .cue i{display:block;width:1px;height:38px;background:var(--rule);overflow:hidden;position:relative}
@@ -375,7 +437,7 @@ svg{display:block}
 /* all:unset resetea box-sizing a content-box: lo devolvemos a border-box en todos los controles */
 .mode,.dact,.qbtn,.lvl,.rbtn,.tgl,.lang button,.theme,.totop{box-sizing:border-box}
 /* ---- Sync: mazo ---- */
-.deck{position:relative;margin:0 6px;height:222px;touch-action:pan-y;outline:none}
+.deck{position:relative;margin:0 6px;height:246px;touch-action:pan-y;outline:none}
 .deck:focus-visible{outline:2px solid var(--txt);outline-offset:6px;border-radius:18px}
 .dcard{position:absolute;inset:0;border-radius:18px;background:linear-gradient(160deg,var(--sync-1),var(--sync-0) 70%);border:1px solid rgba(240,141,160,.35);padding:26px 22px;display:flex;flex-direction:column;justify-content:space-between;cursor:grab;user-select:none;-webkit-user-select:none;transform-origin:50% 120%;transition:transform .45s var(--ease),opacity .35s ease,box-shadow .35s ease;will-change:transform;box-shadow:0 12px 30px rgba(0,0,0,.35)}
 .dcard:nth-last-of-type(2){transform:translateY(8px) scale(.965);box-shadow:0 8px 20px rgba(0,0,0,.25)}
@@ -386,14 +448,16 @@ svg{display:block}
 .dcard:not(:last-of-type) .face{opacity:0}
 .dcard:last-of-type .back{opacity:0}
 .dcard:not(:last-of-type) .stamp{display:none}
-.dcard .face{position:absolute;inset:0;padding:26px 22px;display:flex;flex-direction:column;justify-content:space-between}
+.dcard .face{position:absolute;inset:0;padding:20px 22px 18px;display:flex;flex-direction:column;justify-content:space-between}
 .dcard .back{position:absolute;inset:0;display:grid;place-items:center}
 .dcard .back svg{opacity:.35}
 .dhead{display:flex;justify-content:space-between;align-items:center}
 .dlbl{font-family:var(--f-mono);font-size:10px;letter-spacing:.2em;color:var(--sync-4);text-transform:uppercase}
 .dchip{font-family:var(--f-mono);font-size:10px;letter-spacing:.06em;color:var(--sync-5);border:1px solid rgba(247,188,200,.4);border-radius:6px;padding:3px 7px;transition:background-color .4s ease,color .4s ease,border-color .4s ease;text-transform:uppercase}
-.dtitle{font-family:var(--f-display);font-weight:700;letter-spacing:-0.01em;font-size:26px;line-height:1.15;color:var(--sync-5)}
-.dsub{font-size:12px;color:var(--sync-4);line-height:1.5}
+.dmid{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;padding:2px 0}
+.dico{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;color:var(--sync-5);background:rgba(247,188,200,.12);border:1px solid rgba(247,188,200,.28)}
+.dtitle{font-family:var(--f-display);font-weight:700;letter-spacing:-0.01em;font-size:24px;line-height:1.15;color:var(--sync-5);text-wrap:balance}
+.dsub{font-size:12px;color:var(--sync-4);line-height:1.5;text-align:center}
 .dcard.is-match{background:linear-gradient(160deg,var(--sync-2),var(--sync-1) 72%);border-color:rgba(247,188,200,.6);box-shadow:0 12px 40px rgba(224,90,114,.28)}
 .dcard.is-match .dchip{background:var(--sync-5);color:var(--sync-0);border-color:var(--sync-5)}
 .dcard.is-match .dsub{color:var(--sync-5)}
@@ -740,38 +804,57 @@ svg{display:block}
     </div>
   </div>
 
-  <div class="const" id="fy-const">
-    <div class="const-line" aria-hidden="true"></div>
-    <div class="const-grid">
-      <a href="#sync" class="tile tile-sync" data-depth="1.4">
-        <span class="tile-box"><span class="tile-halo" aria-hidden="true"></span>
-          <span class="tile-sq"><span class="tile-lit" aria-hidden="true"></span><span class="tile-pulse" aria-hidden="true"></span><span class="tile-sym"><svg class="sym-sync" width="88" height="88" viewBox="0 0 96 96" fill="none" aria-hidden="true"><rect class="sq-a" x="16" y="18" width="46" height="46" rx="13" fill="rgba(196,58,82,.34)" stroke="#E05A72" stroke-width="1.75"/><rect class="sq-b" x="34" y="32" width="46" height="46" rx="13" fill="rgba(224,90,114,.30)" stroke="#F08DA0" stroke-width="1.75"/><rect class="sq-c" x="34" y="32" width="28" height="32" rx="9" fill="#F7BCC8" opacity=".92"/></svg></span></span>
-        </span>
-        <span class="tile-name"><span class="a" style="color:var(--sync-ink)">4U</span> Sync</span>
-        <span class="tile-verb"><span data-l="es">Coincidir</span><span data-l="en">Match</span></span>
-      </a>
-      <a href="#spark" class="tile tile-spark" data-depth="2.2">
-        <span class="tile-box"><span class="tile-halo" aria-hidden="true"></span>
-          <span class="tile-sq"><span class="tile-lit" aria-hidden="true"></span><span class="tile-pulse" aria-hidden="true"></span><span class="tile-sym"><svg class="sym-spark" width="88" height="88" viewBox="0 0 96 96" fill="none" aria-hidden="true"><rect x="26" y="28" width="44" height="56" rx="12" fill="url(#gEm)" stroke="#2F82F0" stroke-width="1.75"/><rect class="ember-core" x="38" y="46" width="20" height="24" rx="6" fill="#6FA8FF" opacity=".0" style="transition:opacity .5s ease"/><g class="embers"><path d="M48 6l3.2 8.4L48 19l-3.2-4.6z" fill="url(#gSh)"/><path d="M35 14l2.6 6.6L35 24l-2.6-3.4z" fill="url(#gSh)" opacity=".85"/><path d="M61 12l2.8 7L61 23l-2.8-4z" fill="url(#gSh)" opacity=".85"/><path d="M42 2l2 5.2L42 10l-2-2.8z" fill="url(#gSh)" opacity=".6"/></g></svg></span></span>
-        </span>
-        <span class="tile-name"><span class="a" style="color:var(--spark-ink)">4U</span> Spark</span>
-        <span class="tile-verb"><span data-l="es">Encender</span><span data-l="en">Ignite</span></span>
-      </a>
-      <a href="#orbit" class="tile tile-orbit" data-depth="1.8">
-        <span class="tile-box"><span class="tile-halo" aria-hidden="true"></span>
-          <span class="tile-sq"><span class="tile-lit" aria-hidden="true"></span><span class="tile-pulse" aria-hidden="true"></span><span class="tile-sym"><svg class="sym-orbit" width="88" height="88" viewBox="0 0 96 96" fill="none" aria-hidden="true"><circle cx="48" cy="50" r="30" stroke="url(#gOr)" stroke-width="3" fill="none"/><g class="dot"><rect x="62" y="20" width="13" height="13" rx="4.5" fill="#A87FDB" stroke="#E2D2F7" stroke-width="1"/></g></svg></span></span>
-        </span>
-        <span class="tile-name"><span class="a" style="color:var(--orbit-ink)">4U</span> Orbit</span>
-        <span class="tile-verb"><span data-l="es">Acompañar</span><span data-l="en">Attune</span></span>
-      </a>
-      <a href="#proximamente" class="tile tile-gold" data-depth="2.6" data-teaser>
-        <span class="tile-box"><span class="tile-halo" aria-hidden="true"></span>
-          <span class="tile-sq"><span class="tile-lit" aria-hidden="true"></span><span class="tile-pulse" aria-hidden="true"></span><span class="tile-sym"><span class="tease" aria-hidden="true"><svg width="88" height="88" aria-hidden="true"><use href="#sym-pine"/></svg></span></span></span>
-        </span>
-        <span class="tile-name"><span class="a" style="color:var(--gold-ink2)">4U</span> <span class="blur" aria-hidden="true">Swap</span></span>
-        <span class="tile-verb"><span data-l="es">Próximamente</span><span data-l="en">Coming soon</span></span>
-      </a>
+  <div class="stage" id="fy-stage" data-on="0">
+    <div class="stage-bg" aria-hidden="true"><i class="bg-sync"></i><i class="bg-spark"></i><i class="bg-orbit"></i><i class="bg-gold"></i></div>
+    <div class="stage-body">
+      <div class="sp-panel s-sync is-on" role="tabpanel" id="sp-p-sync" aria-labelledby="sp-t-sync" data-i="0">
+        <div class="sp-sym"><span class="sp-halo" aria-hidden="true"></span><span class="sp-sq"><svg class="sym-sync" viewBox="0 0 96 96" fill="none" aria-hidden="true"><rect class="sq-a" x="16" y="18" width="46" height="46" rx="13" fill="rgba(196,58,82,.34)" stroke="#E05A72" stroke-width="1.75"/><rect class="sq-b" x="34" y="32" width="46" height="46" rx="13" fill="rgba(224,90,114,.30)" stroke="#F08DA0" stroke-width="1.75"/><rect class="sq-c" x="34" y="32" width="28" height="32" rx="9" fill="#F7BCC8" opacity=".92"/></svg></span></div>
+        <div class="sp-copy">
+          <div class="sp-kicker"><span data-l="es">App 01 · Coincidir</span><span data-l="en">App 01 · Match</span></div>
+          <div class="wm sp-wm"><span class="a">4U</span> Sync</div>
+          <p class="sp-frase"><span data-l="es">La app que dice lo que no te atreves a decir.</span><span data-l="en">The app that says what you don’t dare to say.</span></p>
+          <p class="sp-sub"><span data-l="es">Parejas, amigos y familia. Solo se revelan los sí mutuos.</span><span data-l="en">Couples, friends and family. Only mutual yeses are revealed.</span></p>
+          <a class="sp-link" href="#sync"><span data-l="es">Ver la app</span><span data-l="en">See the app</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+      <div class="sp-panel s-spark" role="tabpanel" id="sp-p-spark" aria-labelledby="sp-t-spark" data-i="1">
+        <div class="sp-sym"><span class="sp-halo" aria-hidden="true"></span><span class="sp-sq"><svg class="sym-spark" viewBox="0 0 96 96" fill="none" aria-hidden="true"><rect x="26" y="28" width="44" height="56" rx="12" fill="url(#gEm)" stroke="#2F82F0" stroke-width="1.75"/><g class="embers"><path d="M48 6l3.2 8.4L48 19l-3.2-4.6z" fill="url(#gSh)"/><path d="M35 14l2.6 6.6L35 24l-2.6-3.4z" fill="url(#gSh)" opacity=".85"/><path d="M61 12l2.8 7L61 23l-2.8-4z" fill="url(#gSh)" opacity=".85"/><path d="M42 2l2 5.2L42 10l-2-2.8z" fill="url(#gSh)" opacity=".6"/></g></svg></span></div>
+        <div class="sp-copy">
+          <div class="sp-kicker"><span data-l="es">App 02 · Encender</span><span data-l="en">App 02 · Ignite</span></div>
+          <div class="wm sp-wm"><span class="a">4U</span> Spark</div>
+          <p class="sp-frase"><span data-l="es">La pregunta que cambia la noche.</span><span data-l="en">The question that changes the night.</span></p>
+          <p class="sp-sub"><span data-l="es">Cartas-pregunta para conocer a alguien de verdad. Sin cuenta, en 5 segundos.</span><span data-l="en">Question cards to truly get to know someone. No account, in 5 seconds.</span></p>
+          <a class="sp-link" href="#spark"><span data-l="es">Ver la app</span><span data-l="en">See the app</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+      <div class="sp-panel s-orbit" role="tabpanel" id="sp-p-orbit" aria-labelledby="sp-t-orbit" data-i="2">
+        <div class="sp-sym"><span class="sp-halo" aria-hidden="true"></span><span class="sp-sq"><svg class="sym-orbit" viewBox="0 0 96 96" fill="none" aria-hidden="true"><circle cx="48" cy="50" r="30" stroke="url(#gOr)" stroke-width="3" fill="none"/><g class="dot"><rect x="62" y="20" width="13" height="13" rx="4.5" fill="#A87FDB" stroke="#E2D2F7" stroke-width="1"/></g></svg></span></div>
+        <div class="sp-copy">
+          <div class="sp-kicker"><span data-l="es">App 03 · Acompañar</span><span data-l="en">App 03 · Attune</span></div>
+          <div class="wm sp-wm"><span class="a">4U</span> Orbit</div>
+          <p class="sp-frase"><span data-l="es">Aprende a acompañarla.</span><span data-l="en">Learn to be in sync with her.</span></p>
+          <p class="sp-sub"><span data-l="es">Para parejas: empatía operativa, con base científica y privacidad absoluta.</span><span data-l="en">For couples: operational empathy, science-based, absolute privacy.</span></p>
+          <a class="sp-link" href="#orbit"><span data-l="es">Ver la app</span><span data-l="en">See the app</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+      <div class="sp-panel s-gold" role="tabpanel" id="sp-p-gold" aria-labelledby="sp-t-gold" data-i="3">
+        <div class="sp-sym"><span class="sp-halo" aria-hidden="true"></span><span class="sp-sq"><span class="tease" aria-hidden="true"><svg width="150" height="150" aria-hidden="true"><use href="#sym-pine"/></svg></span></span></div>
+        <div class="sp-copy">
+          <div class="sp-kicker"><span data-l="es">App 04 · Próximamente</span><span data-l="en">App 04 · Coming soon</span></div>
+          <div class="wm sp-wm"><span class="a">4U</span> <span class="blur" aria-hidden="true">Swap</span></div>
+          <p class="sp-frase"><span class="blur" aria-hidden="true">—— ——— —— ———.</span></p>
+          <p class="sp-sub"><span data-l="es">La cuarta luz de la casa ya se está encendiendo.</span><span data-l="en">The fourth light of the house is already warming up.</span></p>
+          <a class="sp-link" href="#proximamente" data-teaser><span data-l="es">Próximos desarrollos</span><span data-l="en">In the works</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
     </div>
+    <div class="stage-dock" role="tablist" aria-label="Apps">
+      <button type="button" class="sp-tab s-sync is-on" role="tab" id="sp-t-sync" aria-selected="true" aria-controls="sp-p-sync" tabindex="0" data-i="0"><span class="sq"><svg width="30" height="30" aria-hidden="true"><use href="#sym-sync"/></svg></span><span class="txt"><span class="tn"><span class="a">4U</span> Sync</span><span class="tv"><span data-l="es">Coincidir</span><span data-l="en">Match</span></span></span><i class="bar" aria-hidden="true"></i></button>
+      <button type="button" class="sp-tab s-spark" role="tab" id="sp-t-spark" aria-selected="false" aria-controls="sp-p-spark" tabindex="-1" data-i="1"><span class="sq"><svg width="30" height="30" aria-hidden="true"><use href="#sym-spark"/></svg></span><span class="txt"><span class="tn"><span class="a">4U</span> Spark</span><span class="tv"><span data-l="es">Encender</span><span data-l="en">Ignite</span></span></span><i class="bar" aria-hidden="true"></i></button>
+      <button type="button" class="sp-tab s-orbit" role="tab" id="sp-t-orbit" aria-selected="false" aria-controls="sp-p-orbit" tabindex="-1" data-i="2"><span class="sq"><svg width="30" height="30" aria-hidden="true"><use href="#sym-orbit"/></svg></span><span class="txt"><span class="tn"><span class="a">4U</span> Orbit</span><span class="tv"><span data-l="es">Acompañar</span><span data-l="en">Attune</span></span></span><i class="bar" aria-hidden="true"></i></button>
+      <button type="button" class="sp-tab s-gold" role="tab" id="sp-t-gold" aria-selected="false" aria-controls="sp-p-gold" tabindex="-1" data-i="3" data-teaser><span class="sq"><span class="tease" style="filter:blur(5px);animation:none" aria-hidden="true"><svg width="30" height="30" aria-hidden="true"><use href="#sym-pine"/></svg></span></span><span class="txt"><span class="tn"><span class="a">4U</span> <span class="blur" aria-hidden="true">Swap</span></span><span class="tv"><span data-l="es">Próximamente</span><span data-l="en">Coming soon</span></span></span><i class="bar" aria-hidden="true"></i></button>
+    </div>
+    <div class="const-line stage-line" aria-hidden="true"></div>
   </div>
   <div class="hero-foot">
     <p><span data-l="es">Misma geometría, cuatro luces distintas. Sin redes sociales, sin feeds infinitos.</span><span data-l="en">Same geometry, four different lights. No social networks, no infinite feeds.</span></p>
@@ -787,9 +870,9 @@ svg{display:block}
   </div>
   <div class="prin-list">
     <article class="pr rv"><span class="n">01</span><div><h3><span data-l="es">La privacidad es la mecánica, no la letra chica.</span><span data-l="en">Privacy is the mechanic, not the fine print.</span></h3><p><span data-l="es">En <span class="a-sync">Sync</span> nadie ve tus swipes: solo lo que ambos marcaron se revela. En <span class="a-orbit">Orbit</span>, quien registra su ciclo manda campo por campo, revocable al instante — y la privacidad nunca es premium. En <span class="a-spark">Spark</span> se juega sin cuenta y sin conexión.</span><span data-l="en">In <span class="a-sync">Sync</span> nobody sees your swipes: only what both marked is revealed. In <span class="a-orbit">Orbit</span>, whoever tracks their cycle rules field by field, revocable instantly — and privacy is never premium. <span class="a-spark">Spark</span> plays without an account, offline.</span></p></div></article>
-    <article class="pr rv"><span class="n">02</span><div><h3><span data-l="es">Pago único, sin suscripción.</span><span data-l="en">One-time payment, no subscription.</span></h3><p><span data-l="es">«Pago único — sin suscripción» es, literalmente, el titular de nuestros paywalls. Nada de lo que hace al producto lo que es se pone detrás del pago: ver un match, leerlo y hablarlo en Sync es gratis siempre.</span><span data-l="en">"One payment — no subscription" is, literally, the headline of our paywalls. Nothing that makes the product what it is sits behind the paywall: seeing a match, reading it and talking it out in Sync is free, always.</span></p></div></article>
-    <article class="pr rv"><span class="n">03</span><div><h3><span data-l="es">Sin trucos.</span><span data-l="en">No tricks.</span></h3><p><span data-l="es">Sin rachas punitivas, sin «vuelve mañana», sin números inventados, sin celebraciones que manipulen. Los teasers de Sync son siempre reales; Orbit nunca afirma «ella se sentirá X».</span><span data-l="en">No punitive streaks, no "come back tomorrow", no invented numbers, no manipulative celebrations. Sync's teasers are always real; Orbit never claims "she will feel X".</span></p></div></article>
-    <article class="pr rv"><span class="n">04</span><div><h3><span data-l="es">Hecho para soltar el teléfono.</span><span data-l="en">Built to put the phone down.</span></h3><p><span data-l="es">Spark pone un minuto por pregunta porque la app gana cuando sueltan el teléfono. Sync convierte cada match en un plan con fecha y en una entrada del diario «Nuestra historia». Orbit convierte una fase en una acción de hoy.</span><span data-l="en">Spark gives each question one minute because the app wins when you put the phone down. Sync turns every match into a dated plan and an entry in the "Our story" journal. Orbit turns a phase into an action for today.</span></p></div></article>
+    <article class="pr rv"><span class="n">02</span><div><h3><span data-l="es">Pago único, sin suscripción.</span><span data-l="en">One-time payment, no subscription.</span></h3><p><span data-l="es">Pago único — sin suscripción es, literalmente, el titular de nuestros paywalls. Nada de lo que hace al producto lo que es se pone detrás del pago: ver un match, leerlo y hablarlo en Sync es gratis siempre.</span><span data-l="en">One payment — no subscription is, literally, the headline of our paywalls. Nothing that makes the product what it is sits behind the paywall: seeing a match, reading it and talking it out in Sync is free, always.</span></p></div></article>
+    <article class="pr rv"><span class="n">03</span><div><h3><span data-l="es">Sin trucos.</span><span data-l="en">No tricks.</span></h3><p><span data-l="es">Sin rachas punitivas, sin vuelve mañana, sin números inventados, sin celebraciones que manipulen. Los teasers de Sync son siempre reales; Orbit nunca afirma ella se sentirá X.</span><span data-l="en">No punitive streaks, no come back tomorrow, no invented numbers, no manipulative celebrations. Sync's teasers are always real; Orbit never claims she will feel X.</span></p></div></article>
+    <article class="pr rv"><span class="n">04</span><div><h3><span data-l="es">Hecho para soltar el teléfono.</span><span data-l="en">Built to put the phone down.</span></h3><p><span data-l="es">Spark pone un minuto por pregunta porque la app gana cuando sueltan el teléfono. Sync convierte cada match en un plan con fecha y en una entrada del diario Nuestra historia. Orbit convierte una fase en una acción de hoy.</span><span data-l="en">Spark gives each question one minute because the app wins when you put the phone down. Sync turns every match into a dated plan and an entry in the Our story journal. Orbit turns a phase into an action for today.</span></p></div></article>
     <article class="pr rv"><span class="n">05</span><div><h3><span data-l="es">Sugerente, jamás explícito.</span><span data-l="en">Suggestive, never explicit.</span></h3><p><span data-l="es">Todo lo íntimo se escribe para poder leerse en voz alta en un bar. Cero anatomía, cero vulgaridad, cero cursilería.</span><span data-l="en">Everything intimate is written so it can be read aloud in a bar. Zero anatomy, zero vulgarity, zero corniness.</span></p></div></article>
     <article class="pr rv"><span class="n">06</span><div><h3><span data-l="es">Una casa de diseño.</span><span data-l="en">One design house.</span></h3><p><span data-l="es">Las cuatro comparten geometría — suavizado, nunca redondo —, tema oscuro por defecto y un solo matiz por app, con el verde reservado a estado. Bilingües ES/EN; lanzamiento en Irlanda y México.</span><span data-l="en">All four share geometry — softened, never round —, dark theme by default and a single hue per app, with green reserved for status. Bilingual ES/EN; launching in Ireland and Mexico.</span></p></div></article>
   </div>
@@ -805,11 +888,11 @@ svg{display:block}
       <div class="room-label rv"><span data-l="es">App 01 · Coincidir · Coral 355°</span><span data-l="en">App 01 · Match · Coral 355°</span></div>
       <div class="wm room-wm rv-1"><span class="a">4U</span><i>Sync</i></div>
       <h2 class="display room-h2 rv-2"><span data-l="es">La app que dice lo que no te atreves a decir.</span><span data-l="en">The app that says what you don't dare to say.</span></h2>
-      <p class="lead room-p rv-3"><span data-l="es">No es una dating app: es un espacio seguro de coincidencias para parejas, amigos y familia. Cada quien desliza en privado «cartas de deseo» — citas, viajes, planes, intimidad en pareja (18+) — y solo se revelan los sí mutuos.</span><span data-l="en">Not a dating app: a safe space of coincidences for couples, friends and family. Each person privately swipes "desire cards" — dates, trips, plans, couple intimacy (18+) — and only mutual yeses are revealed.</span></p>
+      <p class="lead room-p rv-3"><span data-l="es">No es una dating app: es un espacio seguro de coincidencias para parejas, amigos y familia. Cada quien desliza en privado cartas de deseo — citas, viajes, planes, intimidad en pareja (18+) — y solo se revelan los sí mutuos.</span><span data-l="en">Not a dating app: a safe space of coincidences for couples, friends and family. Each person privately swipes desire cards — dates, trips, plans, couple intimacy (18+) — and only mutual yeses are revealed.</span></p>
       <div class="traits">
-        <div class="trait rv"><span class="l">A</span><div><b><span data-l="es">Anónimo hasta el match</span><span data-l="en">Anonymous until the match</span></b><span class="d"><span data-l="es">Cartas propias: «propone lo que nunca te atreves a decir — anónimo hasta el match». Nadie ve tus swipes.</span><span data-l="en">Your own cards: "propose what you never dare to say — anonymous until the match". Nobody sees your swipes.</span></span></div></div>
-        <div class="trait rv-1"><span class="l">B</span><div><b><span data-l="es">Del match al plan</span><span data-l="en">From match to plan</span></b><span class="d"><span data-l="es">Swipe privado → match mutuo → conversación guiada → hacerlo realidad → registrarlo en el diario «Nuestra historia».</span><span data-l="en">Private swipe → mutual match → guided conversation → make it real → log it in the "Our story" journal.</span></span></div></div>
-        <div class="trait rv-2"><span class="l">C</span><div><b><span data-l="es">Gratis donde importa</span><span data-l="en">Free where it matters</span></b><span class="d"><span data-l="es">Ver un match, leerlo y hablarlo es gratis siempre. Lifetime: «Pago único — sin suscripción».</span><span data-l="en">Seeing a match, reading it and talking it out is free, always. Lifetime: "One payment — no subscription".</span></span></div></div>
+        <div class="trait rv"><span class="l">A</span><div><b><span data-l="es">Anónimo hasta el match</span><span data-l="en">Anonymous until the match</span></b><span class="d"><span data-l="es">Cartas propias: propone lo que nunca te atreves a decir — anónimo hasta el match. Nadie ve tus swipes.</span><span data-l="en">Your own cards: propose what you never dare to say — anonymous until the match. Nobody sees your swipes.</span></span></div></div>
+        <div class="trait rv-1"><span class="l">B</span><div><b><span data-l="es">Del match al plan</span><span data-l="en">From match to plan</span></b><span class="d"><span data-l="es">Swipe privado → match mutuo → conversación guiada → hacerlo realidad → registrarlo en el diario Nuestra historia.</span><span data-l="en">Private swipe → mutual match → guided conversation → make it real → log it in the Our story journal.</span></span></div></div>
+        <div class="trait rv-2"><span class="l">C</span><div><b><span data-l="es">Gratis donde importa</span><span data-l="en">Free where it matters</span></b><span class="d"><span data-l="es">Ver un match, leerlo y hablarlo es gratis siempre. Lifetime: Pago único — sin suscripción.</span><span data-l="en">Seeing a match, reading it and talking it out is free, always. Lifetime: One payment — no subscription.</span></span></div></div>
       </div>
     </div>
     <div class="room-demo">
@@ -817,23 +900,23 @@ svg{display:block}
         <div class="win-badge r" aria-hidden="true" style="--wbg:var(--sync-bg);--hue-rgb:224,90,114"><svg width="62" height="62"><use href="#sym-sync"/></svg></div>
         <div class="win win-sync" id="win-sync">
           <div class="sb"><span>19:24</span><span class="bat" style="--b:4px"></span></div>
-          <div class="apph"><div class="wm"><span class="a" style="color:var(--sync)">4U</span><i>Sync</i></div><div class="tag"><span data-l="es">«Descubran lo que ambos quieren.»</span><span data-l="en">"Discover what you both want."</span></div></div>
+          <div class="apph"><div class="wm"><span class="a" style="color:var(--sync)">4U</span><i>Sync</i></div><div class="tag"><span data-l="es">Descubran lo que ambos quieren.</span><span data-l="en">Discover what you both want.</span></div></div>
           <div class="modes" role="radiogroup" aria-label="Modo" id="sy-modes" data-al-es="Modo" data-al-en="Mode">
             <button type="button" class="mode" role="radio" aria-checked="true" data-mode="0" style="--mc:var(--sync-3)"><span class="t"><i></i><span data-l="es">Pareja</span><span data-l="en">Couple</span></span><span class="s"><span data-l="es">Citas, planes e intimidad</span><span data-l="en">Dates, plans and intimacy</span></span></button>
             <button type="button" class="mode" role="radio" aria-checked="false" data-mode="1" style="--mc:var(--sync-amigos)"><span class="t"><i></i><span data-l="es">Amigos</span><span data-l="en">Friends</span></span><span class="s"><span data-l="es">Planes que por fin pasan</span><span data-l="en">Plans that finally happen</span></span></button>
             <button type="button" class="mode" role="radio" aria-checked="false" data-mode="2" style="--mc:var(--sync-familia)"><span class="t"><i></i><span data-l="es">Familia</span><span data-l="en">Family</span></span><span class="s"><span data-l="es">Rituales y tiempo juntos</span><span data-l="en">Rituals and time together</span></span></button>
           </div>
           <div class="deck" id="sy-deck" tabindex="0" role="group" aria-label="Carta de deseo. Desliza a la derecha para decir sí, a la izquierda para pasar. Las flechas del teclado también funcionan." data-al-es="Carta de deseo. Desliza a la derecha para decir sí, a la izquierda para pasar. Las flechas del teclado también funcionan." data-al-en="Desire card. Swipe right to say yes, left to pass. Arrow keys work too.">
-            <article class="dcard" aria-hidden="true"><div class="back"><svg width="72" height="72"><use href="#sym-sync"/></svg></div><div class="face"><div class="dhead"><span class="dlbl"><span data-l="es">Carta de deseo</span><span data-l="en">Desire card</span></span><span class="dchip"><span data-l="es">Sí mutuo</span><span data-l="en">Mutual yes</span></span></div><div class="dtitle"><span data-l="es">«Cita sin teléfonos»</span><span data-l="en">"A date, no phones"</span></div><div class="dsub"><span data-l="es">Solo se revelan los sí mutuos. Nadie ve tus swipes.</span><span data-l="en">Only mutual yeses are revealed. Nobody sees your swipes.</span></div></div><span class="stamp yes"><span data-l="es">Sí</span><span data-l="en">Yes</span></span><span class="stamp no"><span data-l="es">Paso</span><span data-l="en">Pass</span></span></article>
-            <article class="dcard" aria-hidden="true"><div class="back"><svg width="72" height="72"><use href="#sym-sync"/></svg></div><div class="face"><div class="dhead"><span class="dlbl"><span data-l="es">Carta de deseo</span><span data-l="en">Desire card</span></span><span class="dchip"><span data-l="es">Sí mutuo</span><span data-l="en">Mutual yes</span></span></div><div class="dtitle"><span data-l="es">«Cita sin teléfonos»</span><span data-l="en">"A date, no phones"</span></div><div class="dsub"><span data-l="es">Solo se revelan los sí mutuos. Nadie ve tus swipes.</span><span data-l="en">Only mutual yeses are revealed. Nobody sees your swipes.</span></div></div><span class="stamp yes"><span data-l="es">Sí</span><span data-l="en">Yes</span></span><span class="stamp no"><span data-l="es">Paso</span><span data-l="en">Pass</span></span></article>
-            <article class="dcard"><div class="back"><svg width="72" height="72"><use href="#sym-sync"/></svg></div><div class="face"><div class="dhead"><span class="dlbl"><span data-l="es">Carta de deseo</span><span data-l="en">Desire card</span></span><span class="dchip"><span data-l="es">Sí mutuo</span><span data-l="en">Mutual yes</span></span></div><div class="dtitle"><span data-l="es">«Cita sin teléfonos»</span><span data-l="en">"A date, no phones"</span></div><div class="dsub"><span data-l="es">Solo se revelan los sí mutuos. Nadie ve tus swipes.</span><span data-l="en">Only mutual yeses are revealed. Nobody sees your swipes.</span></div></div><span class="stamp yes"><span data-l="es">Sí</span><span data-l="en">Yes</span></span><span class="stamp no"><span data-l="es">Paso</span><span data-l="en">Pass</span></span></article>
+            <article class="dcard" aria-hidden="true"><div class="back"><svg width="72" height="72"><use href="#sym-sync"/></svg></div><div class="face"><div class="dhead"><span class="dlbl"><span data-l="es">Carta de deseo</span><span data-l="en">Desire card</span></span><span class="dchip"><span data-l="es">Sí mutuo</span><span data-l="en">Mutual yes</span></span></div><div class="dmid"><span class="dico" aria-hidden="true"></span><div class="dtitle"><span data-l="es">Cita sin teléfonos</span><span data-l="en">A date, no phones</span></div></div><div class="dsub"><span data-l="es">Solo se revelan los sí mutuos. Nadie ve tus swipes.</span><span data-l="en">Only mutual yeses are revealed. Nobody sees your swipes.</span></div></div><span class="stamp yes"><span data-l="es">Sí</span><span data-l="en">Yes</span></span><span class="stamp no"><span data-l="es">Paso</span><span data-l="en">Pass</span></span></article>
+            <article class="dcard" aria-hidden="true"><div class="back"><svg width="72" height="72"><use href="#sym-sync"/></svg></div><div class="face"><div class="dhead"><span class="dlbl"><span data-l="es">Carta de deseo</span><span data-l="en">Desire card</span></span><span class="dchip"><span data-l="es">Sí mutuo</span><span data-l="en">Mutual yes</span></span></div><div class="dmid"><span class="dico" aria-hidden="true"></span><div class="dtitle"><span data-l="es">Cita sin teléfonos</span><span data-l="en">A date, no phones</span></div></div><div class="dsub"><span data-l="es">Solo se revelan los sí mutuos. Nadie ve tus swipes.</span><span data-l="en">Only mutual yeses are revealed. Nobody sees your swipes.</span></div></div><span class="stamp yes"><span data-l="es">Sí</span><span data-l="en">Yes</span></span><span class="stamp no"><span data-l="es">Paso</span><span data-l="en">Pass</span></span></article>
+            <article class="dcard"><div class="back"><svg width="72" height="72"><use href="#sym-sync"/></svg></div><div class="face"><div class="dhead"><span class="dlbl"><span data-l="es">Carta de deseo</span><span data-l="en">Desire card</span></span><span class="dchip"><span data-l="es">Sí mutuo</span><span data-l="en">Mutual yes</span></span></div><div class="dmid"><span class="dico" aria-hidden="true"></span><div class="dtitle"><span data-l="es">Cita sin teléfonos</span><span data-l="en">A date, no phones</span></div></div><div class="dsub"><span data-l="es">Solo se revelan los sí mutuos. Nadie ve tus swipes.</span><span data-l="en">Only mutual yeses are revealed. Nobody sees your swipes.</span></div></div><span class="stamp yes"><span data-l="es">Sí</span><span data-l="en">Yes</span></span><span class="stamp no"><span data-l="es">Paso</span><span data-l="en">Pass</span></span></article>
             <span class="hint-ptr" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-4 0v1"/><path d="M14 10V4a2 2 0 0 0-4 0v2"/><path d="M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg></span>
             <div class="deck-toast" id="sy-toast" role="status" aria-live="polite"><span data-l="es">Nadie ve tus swipes.</span><span data-l="en">Nobody sees your swipes.</span></div>
           </div>
           <div class="deck-desc" aria-hidden="true"><svg class="al" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span><span data-l="es">Desliza a la derecha para decir sí, a la izquierda para pasar.</span><span data-l="en">Swipe right to say yes, left to pass.</span></span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
           <div class="deck-acts" id="sy-acts"><button type="button" id="sy-no" aria-label="Paso" data-al-es="Paso" data-al-en="Pass">Paso</button><button type="button" id="sy-yes" aria-label="Sí" data-al-es="Sí" data-al-en="Yes">Sí</button></div>
-          <div class="row" id="sy-story"><div class="lft"><span class="ic"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#E05A72" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span><div><div class="rt"><span data-l="es">«Nuestra historia»</span><span data-l="en">"Our story"</span><span class="count" id="sy-count" hidden>1</span></div><div class="rs"><span data-l="es">El diario de lo que hicieron realidad</span><span data-l="en">The journal of what you made real</span></div></div></div><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#9AA3B2" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></div>
-          <div class="pay"><span data-l="es">«Pago único — sin suscripción»</span><span data-l="en">"One payment — no subscription"</span></div>
+          <div class="row" id="sy-story"><div class="lft"><span class="ic"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#E05A72" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span><div><div class="rt"><span data-l="es">Nuestra historia</span><span data-l="en">Our story</span><span class="count" id="sy-count" hidden>1</span></div><div class="rs"><span data-l="es">El diario de lo que hicieron realidad</span><span data-l="en">The journal of what you made real</span></div></div></div><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#9AA3B2" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></div>
+          <div class="pay"><span data-l="es">Pago único — sin suscripción</span><span data-l="en">One payment — no subscription</span></div>
         </div>
       </div>
     </div>
@@ -849,7 +932,7 @@ svg{display:block}
         <div class="win-badge l" aria-hidden="true" style="--wbg:var(--spark-bg);--hue-rgb:47,130,240;--float-t:8s;--float-d:.8s"><svg class="sym-spark" width="62" height="62" viewBox="0 0 96 96" fill="none"><rect x="26" y="28" width="44" height="56" rx="12" fill="url(#gEm)" stroke="#2F82F0" stroke-width="1.75"/><g class="embers"><path d="M48 6l3.2 8.4L48 19l-3.2-4.6z" fill="url(#gSh)"/><path d="M35 14l2.6 6.6L35 24l-2.6-3.4z" fill="url(#gSh)" opacity=".85"/><path d="M61 12l2.8 7L61 23l-2.8-4z" fill="url(#gSh)" opacity=".85"/></g></svg></div>
         <div class="win win-spark" id="win-spark">
           <div class="sb"><span>21:07</span><span class="bat" style="--b:5px"></span></div>
-          <div class="apph"><div class="wm"><span class="a" style="color:var(--spark)">4U</span><i>Spark</i></div><div class="tag"><span data-l="es">«Enciendan la conversación.»</span><span data-l="en">"Light up the conversation."</span></div></div>
+          <div class="apph"><div class="wm"><span class="a" style="color:var(--spark)">4U</span><i>Spark</i></div><div class="tag"><span data-l="es">Enciendan la conversación.</span><span data-l="en">Light up the conversation.</span></div></div>
           <div class="mono" style="padding:8px 6px 4px;font-size:10px;letter-spacing:.2em;color:var(--spark-4)"><span data-l="es">¿Con quién juegan?</span><span data-l="en">Who are you playing with?</span></div>
           <div class="modes grid" role="radiogroup" aria-label="Modo" id="sp-modes" data-al-es="Modo" data-al-en="Mode">
             <button type="button" class="mode" role="radio" aria-checked="true" data-mode="0" data-q="0" style="--mc:var(--spark-3)"><span class="t"><i></i><span data-l="es">Fiesta</span><span data-l="en">Party</span></span><span class="s"><span data-l="es">Grupo grande, retos y yo-nunca</span><span data-l="en">Big group, dares and never-have-I-ever</span></span></button>
@@ -883,7 +966,7 @@ svg{display:block}
             <button type="button" class="qbtn p" id="sp-play"><span data-l="es">Jugar</span><span data-l="en">Play</span></button>
             <button type="button" class="qbtn s" id="sp-surprise"><span data-l="es">Sorpréndeme</span><span data-l="en">Surprise me</span></button>
           </div>
-          <div class="pay"><span data-l="es">«Todas las preguntas, para siempre»</span><span data-l="en">"All the questions, forever"</span></div>
+          <div class="pay"><span data-l="es">Todas las preguntas, para siempre</span><span data-l="en">All the questions, forever</span></div>
         </div>
       </div>
     </div>
@@ -895,7 +978,7 @@ svg{display:block}
       <p class="lead room-p rv-3"><span data-l="es">Un juego de cartas-pregunta para conocer a alguien de verdad — en una fiesta, una cita, la sobremesa familiar o en pareja. Se abre y se juega en 5 segundos, sin cuenta; el teléfono va al centro de la mesa o pasa de mano en mano.</span><span data-l="en">A question-card game for truly getting to know someone — at a party, on a date, over family dinner or as a couple. Opens and plays in 5 seconds, no account; the phone goes to the center of the table or passes hand to hand.</span></p>
       <div class="traits">
         <div class="trait rv"><span class="l">A</span><div><b><span data-l="es">Escalada emocional</span><span data-l="en">Emotional escalation</span></b><span class="d"><span data-l="es">Miles de preguntas por categoría, en niveles Suave → Media → Intensa — el principio de las 36 preguntas de Aron.</span><span data-l="en">Thousands of questions per category, in Mild → Medium → Intense levels — the principle behind Aron's 36 questions.</span></span></div></div>
-        <div class="trait rv-1"><span class="l">B</span><div><b><span data-l="es">Un minuto por pregunta</span><span data-l="en">One minute per question</span></b><span class="d"><span data-l="es">El temporizador existe porque «la app gana cuando sueltan el teléfono». Si suena a examen, está mal.</span><span data-l="en">The timer exists because "the app wins when you put the phone down". If it sounds like an exam, it's wrong.</span></span></div></div>
+        <div class="trait rv-1"><span class="l">B</span><div><b><span data-l="es">Un minuto por pregunta</span><span data-l="en">One minute per question</span></b><span class="d"><span data-l="es">El temporizador existe porque la app gana cuando sueltan el teléfono. Si suena a examen, está mal.</span><span data-l="en">The timer exists because the app wins when you put the phone down. If it sounds like an exam, it's wrong.</span></span></div></div>
         <div class="trait rv-2"><span class="l">C</span><div><b><span data-l="es">Las noches quedan</span><span data-l="en">The nights remain</span></b><span class="d"><span data-l="es">Yo Nunca, Verdad o Reto, y cada noche guardada como un hilo. También en web, además de iOS y Android.</span><span data-l="en">Never Have I Ever, Truth or Dare, and every night saved as a thread. Also on web, besides iOS and Android.</span></span></div></div>
       </div>
     </div>
@@ -914,9 +997,9 @@ svg{display:block}
       <h2 class="display room-h2 rv-2"><span data-l="es">Aprende a acompañarla.</span><span data-l="en">Learn to be in sync with her.</span></h2>
       <p class="lead room-p rv-3"><span data-l="es">Para parejas: ayuda a quien acompaña a entender y anticipar el ciclo de su pareja para actuar con empatía — qué plan proponer, cuándo cuidar, cuándo dar espacio. No es una app médica ni un diario clínico frío: es empatía operativa, con base científica.</span><span data-l="en">For couples: it helps the partner understand and anticipate their partner's cycle to act with empathy — what plan to suggest, when to care, when to give space. Not a medical app nor a cold clinical diary: operational empathy, science-based.</span></p>
       <div class="traits">
-        <div class="trait rv"><span class="l">A</span><div><b><span data-l="es">Ella manda</span><span data-l="en">She rules</span></b><span class="d"><span data-l="es">Quien registra su ciclo es dueña absoluta de sus datos: decide qué comparte campo por campo, revocable al instante. «La privacidad nunca es premium.»</span><span data-l="en">Whoever tracks their cycle owns their data absolutely: they decide what to share field by field, revocable instantly. "Privacy is never premium."</span></span></div></div>
-        <div class="trait rv-1"><span class="l">B</span><div><b><span data-l="es">Honestidad primero</span><span data-l="en">Honesty first</span></b><span class="d"><span data-l="es">Modo simétrico honesto para quien acompaña: jamás finge un periodo masculino. Y nunca afirma «ella se sentirá X» — pregúntale cómo se siente hoy.</span><span data-l="en">An honest symmetric mode for the partner: it never fakes a male period. And it never claims "she will feel X" — ask her how she feels today.</span></span></div></div>
-        <div class="trait rv-2"><span class="l">C</span><div><b><span data-l="es">Para los dos</span><span data-l="en">For both</span></b><span class="d"><span data-l="es">Un solo Lifetime lo desbloquea para ambos — «Desbloquear para los dos»: un regalo para la relación.</span><span data-l="en">One Lifetime unlocks it for both — "Unlock for the two of you": a gift for the relationship.</span></span></div></div>
+        <div class="trait rv"><span class="l">A</span><div><b><span data-l="es">Ella manda</span><span data-l="en">She rules</span></b><span class="d"><span data-l="es">Quien registra su ciclo es dueña absoluta de sus datos: decide qué comparte campo por campo, revocable al instante. La privacidad nunca es premium.</span><span data-l="en">Whoever tracks their cycle owns their data absolutely: they decide what to share field by field, revocable instantly. Privacy is never premium.</span></span></div></div>
+        <div class="trait rv-1"><span class="l">B</span><div><b><span data-l="es">Honestidad primero</span><span data-l="en">Honesty first</span></b><span class="d"><span data-l="es">Modo simétrico honesto para quien acompaña: jamás finge un periodo masculino. Y nunca afirma ella se sentirá X — pregúntale cómo se siente hoy.</span><span data-l="en">An honest symmetric mode for the partner: it never fakes a male period. And it never claims she will feel X — ask her how she feels today.</span></span></div></div>
+        <div class="trait rv-2"><span class="l">C</span><div><b><span data-l="es">Para los dos</span><span data-l="en">For both</span></b><span class="d"><span data-l="es">Un solo Lifetime lo desbloquea para ambos — Desbloquear para los dos: un regalo para la relación.</span><span data-l="en">One Lifetime unlocks it for both — Unlock for the two of you: a gift for the relationship.</span></span></div></div>
       </div>
     </div>
     <div class="room-demo">
@@ -925,7 +1008,7 @@ svg{display:block}
         <div class="win win-orbit" id="win-orbit">
           <div class="role" id="ob-role">
             <svg width="44" height="44" aria-hidden="true"><use href="#sym-orbit"/></svg>
-            <h4><span data-l="es">«¿Quién eres en la órbita?»</span><span data-l="en">"Who are you in the orbit?"</span></h4>
+            <h4><span data-l="es">¿Quién eres en la órbita?</span><span data-l="en">Who are you in the orbit?</span></h4>
             <div class="btns">
               <button type="button" class="rbtn p" data-role="acompanar"><span data-l="es">Quiero acompañar a mi pareja</span><span data-l="en">I want to be there for my partner</span></button>
               <button type="button" class="rbtn s" data-role="ciclo"><span data-l="es">Quiero registrar mi ciclo</span><span data-l="en">I want to track my cycle</span></button>
@@ -933,7 +1016,7 @@ svg{display:block}
             <div class="pill-note"><span data-l="es">Elige un rol para entrar a la maqueta</span><span data-l="en">Pick a role to enter the mockup</span></div>
           </div>
           <div class="sb"><span>07:58</span><span class="bat" style="--b:3px"></span></div>
-          <div class="apph"><div class="wm"><span class="a" style="color:var(--orbit)">4U</span><i style="display:inline-flex;align-items:center"><svg class="o" aria-hidden="true"><use href="#ic-o"/></svg>rbit</i></div><div class="tag"><span data-l="es">«Sincronízate con ella.»</span><span data-l="en">"In sync, every day."</span></div></div>
+          <div class="apph"><div class="wm"><span class="a" style="color:var(--orbit)">4U</span><i style="display:inline-flex;align-items:center"><svg class="o" aria-hidden="true"><use href="#ic-o"/></svg>rbit</i></div><div class="tag"><span data-l="es">Sincronízate con ella.</span><span data-l="en">In sync, every day.</span></div></div>
           <div class="ocard">
             <span class="ring" id="ob-ring" role="slider" tabindex="0" aria-valuemin="1" aria-valuemax="28" aria-valuenow="8" aria-valuetext="Día 8 · Folicular" aria-label="Día del ciclo. Arrastra el punto o usa las flechas." data-al-es="Día del ciclo. Arrastra el punto o usa las flechas." data-al-en="Cycle day. Drag the dot or use the arrow keys.">
               <svg width="112" height="112" viewBox="0 0 112 112" aria-hidden="true">
@@ -953,12 +1036,12 @@ svg{display:block}
               <button type="button" class="ob-hoy" id="ob-hoy" hidden><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg><span data-l="es">Hoy</span><span data-l="en">Today</span></button>
             </div>
           </div>
-          <div class="action"><div class="al"><span data-l="es">Acción de hoy</span><span data-l="en">Today's action</span></div><div class="at"><span data-l="es">«Hoy: ofrece un plan tranquilo y ten a mano lo que la alivia.»</span><span data-l="en">"Today: offer a quiet plan and keep what soothes her at hand."</span></div></div>
-          <div class="row" style="margin-top:12px"><div class="lft"><span class="ic"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#A87FDB" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><div><div class="rt"><span data-l="es">«Qué ve tu pareja»</span><span data-l="en">"What your partner sees"</span></div><div class="rs"><span data-l="es">Campo por campo · revocable al instante</span><span data-l="en">Field by field · revocable instantly</span></div></div></div>
+          <div class="action"><div class="al"><span data-l="es">Acción de hoy</span><span data-l="en">Today's action</span></div><div class="at"><span data-l="es">Hoy: ofrece un plan tranquilo y ten a mano lo que la alivia.</span><span data-l="en">Today: offer a quiet plan and keep what soothes her at hand.</span></div></div>
+          <div class="row" style="margin-top:12px"><div class="lft"><span class="ic"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#A87FDB" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><div><div class="rt"><span data-l="es">Qué ve tu pareja</span><span data-l="en">What your partner sees</span></div><div class="rs"><span data-l="es">Campo por campo · revocable al instante</span><span data-l="en">Field by field · revocable instantly</span></div></div></div>
             <button type="button" class="tgl" id="ob-tgl" role="switch" aria-checked="true" aria-label="Compartido"><span class="tl"><span data-l="es" data-on="COMPARTIDO" data-off="PRIVADO">COMPARTIDO</span><span data-l="en" data-on="SHARED" data-off="PRIVATE">SHARED</span></span><span class="tk"><i></i></span></button>
           </div>
-          <div class="disc"><span data-l="es">«Cada persona vive su ciclo distinto. Estas son ideas para acompañar, no reglas — pregúntale cómo se siente hoy.»</span><span data-l="en">"Everyone lives their cycle differently. These are ideas for being there, not rules — ask her how she feels today."</span></div>
-          <div class="pay" style="margin-top:12px"><span data-l="es">«Desbloquear para los dos»</span><span data-l="en">"Unlock for the two of you"</span></div>
+          <div class="disc"><span data-l="es">Cada persona vive su ciclo distinto. Estas son ideas para acompañar, no reglas — pregúntale cómo se siente hoy.</span><span data-l="en">Everyone lives their cycle differently. These are ideas for being there, not rules — ask her how she feels today.</span></div>
+          <div class="pay" style="margin-top:12px"><span data-l="es">Desbloquear para los dos</span><span data-l="en">Unlock for the two of you</span></div>
         </div>
       </div>
     </div>
@@ -999,7 +1082,7 @@ svg{display:block}
       <span class="h-glow" aria-hidden="true"></span>
       <div class="h-top"><span class="h-ic"><svg width="64" height="64" aria-hidden="true"><use href="#sym-sync"/></svg></span><span class="h-name"><span class="wm"><span class="a">4U</span> Sync</span><span class="h-verb"><span data-l="es">Coincidir</span><span data-l="en">Match</span></span></span></div>
       <div class="h-body">
-        <p class="h-frase"><span data-l="es">«La app que dice lo que no te atreves a decir.»</span><span data-l="en">"The app that says what you don’t dare to say."</span></p>
+        <p class="h-frase"><span data-l="es">La app que dice lo que no te atreves a decir.</span><span data-l="en">The app that says what you don’t dare to say.</span></p>
         <p class="h-sub"><span data-l="es">Parejas, amigos y familia. Solo se revelan los sí mutuos.</span><span data-l="en">Couples, friends and family. Only mutual yeses are revealed.</span></p>
         <div class="h-foot"><div class="h-av">iOS · Android</div><a class="h-go" href="#sync"><span data-l="es">Entrar al cuarto</span><span data-l="en">Enter the room</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
       </div>
@@ -1008,7 +1091,7 @@ svg{display:block}
       <span class="h-glow" aria-hidden="true"></span>
       <div class="h-top"><span class="h-ic"><svg width="64" height="64" aria-hidden="true"><use href="#sym-spark"/></svg></span><span class="h-name"><span class="wm"><span class="a">4U</span> Spark</span><span class="h-verb"><span data-l="es">Encender</span><span data-l="en">Ignite</span></span></span></div>
       <div class="h-body">
-        <p class="h-frase"><span data-l="es">«La pregunta que cambia la noche.»</span><span data-l="en">"The question that changes the night."</span></p>
+        <p class="h-frase"><span data-l="es">La pregunta que cambia la noche.</span><span data-l="en">The question that changes the night.</span></p>
         <p class="h-sub"><span data-l="es">Fiesta, cita, sobremesa o pareja. Sin cuenta, en 5 segundos.</span><span data-l="en">Party, date, after dinner or couple. No account, in 5 seconds.</span></p>
         <div class="h-foot"><div class="h-av">iOS · Android · Web</div><a class="h-go" href="#spark"><span data-l="es">Entrar al cuarto</span><span data-l="en">Enter the room</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
       </div>
@@ -1017,7 +1100,7 @@ svg{display:block}
       <span class="h-glow" aria-hidden="true"></span>
       <div class="h-top"><span class="h-ic"><svg width="64" height="64" aria-hidden="true"><use href="#sym-orbit"/></svg></span><span class="h-name"><span class="wm"><span class="a">4U</span> Orbit</span><span class="h-verb"><span data-l="es">Acompañar</span><span data-l="en">Attune</span></span></span></div>
       <div class="h-body">
-        <p class="h-frase"><span data-l="es">«Aprende a acompañarla.»</span><span data-l="en">"Learn to be in sync with her."</span></p>
+        <p class="h-frase"><span data-l="es">Aprende a acompañarla.</span><span data-l="en">Learn to be in sync with her.</span></p>
         <p class="h-sub"><span data-l="es">Para parejas: empatía operativa, con base científica.</span><span data-l="en">For couples: operational empathy, science-based.</span></p>
         <div class="h-foot"><div class="h-av">iOS · Android</div><a class="h-go" href="#orbit"><span data-l="es">Entrar al cuarto</span><span data-l="en">Enter the room</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
       </div>
@@ -1026,7 +1109,7 @@ svg{display:block}
       <span class="h-glow" aria-hidden="true"></span>
       <div class="h-top"><span class="h-ic"><span class="tease" aria-hidden="true"><svg width="64" height="64" aria-hidden="true"><use href="#sym-pine"/></svg></span></span><span class="h-name"><span class="wm"><span class="a">4U</span> <span class="blur" aria-hidden="true">Swap</span></span><span class="h-verb"><span data-l="es">Próximamente</span><span data-l="en">Coming soon</span></span></span></div>
       <div class="h-body">
-        <p class="h-frase"><span class="blur" aria-hidden="true">«—— ——— —— ———.»</span></p>
+        <p class="h-frase"><span class="blur" aria-hidden="true">—— ——— —— ———.</span></p>
         <p class="h-sub"><span data-l="es">La cuarta luz de la casa ya se está encendiendo.</span><span data-l="en">The fourth light of the house is already warming up.</span></p>
         <div class="h-foot"><div class="h-av"><span data-l="es">Muy pronto</span><span data-l="en">Very soon</span></div><a class="h-go" href="#proximamente" data-teaser><span data-l="es">Asomarse</span><span data-l="en">Take a peek</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
       </div>
@@ -1208,6 +1291,31 @@ svg{display:block}
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { measure(); paint(); });
   })();
 
+  /* ---------- escenario del hero: una app a la vez ---------- */
+  (function () {
+    var st = $('#fy-stage'); if (!st) return;
+    var tabs = $$('.sp-tab', st), panels = $$('.sp-panel', st), cur = 0, iv = null, manual = false;
+    function show(i, user) {
+      cur = i; st.setAttribute('data-on', String(i));
+      tabs.forEach(function (t, k) { var on = k === i; t.classList.toggle('is-on', on); t.setAttribute('aria-selected', String(on)); t.setAttribute('tabindex', on ? '0' : '-1'); });
+      panels.forEach(function (p, k) { p.classList.toggle('is-on', k === i); });
+      if (user) { manual = true; st.classList.add('is-manual'); stop(); }
+    }
+    function start() { if (manual || RM || iv) return; iv = setInterval(function () { show((cur + 1) % tabs.length, false); }, 5500); }
+    function stop() { if (iv) { clearInterval(iv); iv = null; } }
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { show(i, true); });
+      t.addEventListener('keydown', function (e) {
+        var n = null;
+        if (e.key === 'ArrowRight') n = (i + 1) % tabs.length; else if (e.key === 'ArrowLeft') n = (i + tabs.length - 1) % tabs.length; else if (e.key === 'Home') n = 0; else if (e.key === 'End') n = tabs.length - 1;
+        if (n === null) return; e.preventDefault(); show(n, true); tabs[n].focus();
+      });
+    });
+    if (FINE) { st.addEventListener('pointerenter', function () { st.classList.add('is-paused'); stop(); }); st.addEventListener('pointerleave', function () { st.classList.remove('is-paused'); start(); }); }
+    onceVisible(st, 0.3, start, stop);
+    document.addEventListener('visibilitychange', function () { if (document.hidden) stop(); else start(); });
+  })();
+
   /* ---------- la casa: cuatro cuartos que se abren ---------- */
   (function () {
     var house = $('#fy-house'); if (!house) return;
@@ -1281,11 +1389,12 @@ svg{display:block}
     var deck = $('#sy-deck'); if (!deck) return;
     var toast = $('#sy-toast'), story = $('#sy-story'), count = $('#sy-count'), badge = $('#win-sync') && $('#win-sync').parentNode.querySelector('.win-badge');
     var MODES = [['Pareja', 'Couple'], ['Amigos', 'Friends'], ['Familia', 'Family']];
-    /* Cartas de deseo por modo. «Cita sin teléfonos» es la del brief; las demás son propuestas de esta página (sustituir por strings reales de la app). */
+    /* Cartas de deseo por modo. Cita sin teléfonos es la del brief; las demás son propuestas de esta página (sustituir por strings reales de la app). */
+    var ICONS = {phone: '<path d="M10.68 13.31a16 16 0 0 0 3.41 2.6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.42 19.42 0 0 1-3.33-2.67m-2.67-3.34a19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91"/><path d="M22 2 2 22"/>', tent: '<path d="M3.5 21 14 3"/><path d="M20.5 21 10 3"/><path d="M15.5 21 12 15l-3.5 6"/><path d="M2 21h20"/>', chef: '<path d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6Z"/><path d="M6 17h12"/>', plane: '<path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/>', game: '<path d="M6 11h4M8 9v4M15 12h.01M18 10h.01"/><path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z"/>', wine: '<path d="M8 22h8"/><path d="M7 10h10"/><path d="M12 15v7"/><path d="M12 15a5 5 0 0 0 5-5c0-2-.5-4-2-8H9c-1.5 4-2 6-2 8a5 5 0 0 0 5 5Z"/>', sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>', pot: '<path d="M2 12h20"/><path d="M20 12v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8"/><path d="m4 8 16-4"/><path d="m8.86 6.78-.45-1.81a2 2 0 0 1 1.45-2.43l1.94-.48a2 2 0 0 1 2.43 1.46l.45 1.8"/>', image: '<rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>'};
     var CARDS = [
-      [['«Cita sin teléfonos»', '"A date, no phones"'], ['«Escapada de fin de semana»', '"A weekend getaway"'], ['«Cocinar juntos, sin receta»', '"Cook together, no recipe"']],
-      [['«El viaje que siempre posponemos»', '"The trip we keep postponing"'], ['«Noche de juegos en casa»', '"Game night at home"'], ['«Cena de reencuentro»', '"A reunion dinner"']],
-      [['«Domingo sin pantallas»', '"A Sunday without screens"'], ['«La receta de la abuela»', '"Grandma\'s recipe"'], ['«Álbum de fotos en la sobremesa»', '"Photo album after dinner"']]
+      [['Cita sin teléfonos', 'A date, no phones', 'phone'], ['Escapada de fin de semana', 'A weekend getaway', 'tent'], ['Cocinar juntos, sin receta', 'Cook together, no recipe', 'chef']],
+      [['El viaje que siempre posponemos', 'The trip we keep postponing', 'plane'], ['Noche de juegos en casa', 'Game night at home', 'game'], ['Cena de reencuentro', 'A reunion dinner', 'wine']],
+      [['Domingo sin pantallas', 'A Sunday without screens', 'sun'], ['La receta de la abuela', 'Grandma’s recipe', 'pot'], ['Álbum de fotos en la sobremesa', 'Photo album after dinner', 'image']]
     ];
     var ci = [0, 0, 0];
     var state = 'desire', mode = 0, busy = false, used = false, matches = 0, hintTO = null, plays = 0, toastTO = null, pulseTO = null;
@@ -1295,6 +1404,7 @@ svg{display:block}
       var m = MODES[mode], c = CARDS[mode][ci[mode] % CARDS[mode].length];
       setText($('.dlbl', card), m[0] + ' · Carta de deseo', m[1] + ' · Desire card');
       setText($('.dtitle', card), c[0], c[1]);
+      var ic = $('.dico', card); if (ic) ic.innerHTML = '<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">' + (ICONS[c[2]] || '') + '</svg>';
       if (card.classList.contains('is-match')) setText($('.dsub', card), 'Solo lo que ambos marcaron se revela.', 'Only what both of you marked is revealed.');
       else setText($('.dsub', card), 'Solo se revelan los sí mutuos. Nadie ve tus swipes.', 'Only mutual yeses are revealed. Nobody sees your swipes.');
     }
@@ -1306,9 +1416,8 @@ svg{display:block}
     }
     function stopHint() { deck.classList.remove('is-hinting'); if (hintTO) { clearTimeout(hintTO); hintTO = null; } }
     function startHint() {
-      if (used || RM || plays >= 2 || deck.classList.contains('is-hinting')) return;
-      plays++; deck.classList.add('is-hinting');
-      hintTO = setTimeout(stopHint, 2 * 5600);
+      if (used || RM || deck.classList.contains('is-hinting')) return;
+      deck.classList.add('is-hinting');
     }
     function markUsed() { if (used) return; used = true; deck.classList.add('is-used'); stopHint(); }
     function showToast() {
@@ -1380,13 +1489,13 @@ svg{display:block}
     var card = $('#sp-card'); if (!card) return;
     var QS = [
       { cat: ['Fiesta · Pregunta', 'Party · Question'], es: '¿Quién canta más fuerte la letra que peor se sabe?', en: 'Who sings the loudest the lyrics they know the worst?' },
-      { cat: ['Rompehielos · Pregunta', 'Icebreaker · Question'], es: 'Sin editarlo antes: ¿con qué nombre exacto tienes guardada a tu mamá en el teléfono?', en: "No editing first: what's the exact name you have your mom saved under in your phone?" },
+      { cat: ['Rompehielos · Pregunta', 'Icebreaker · Question'], es: 'Sin editarlo antes: ¿con qué nombre exacto tienes guardada a tu mamá en el teléfono?', en: 'No editing first: what’s the exact name you have your mom saved under in your phone?' },
       { cat: ['Pareja · Pregunta', 'Couple · Question'], es: '¿Qué hacen mis manos cuando me pongo nervioso?', en: 'What do my hands do when I get nervous?' }
     ];
     var wrap = $('#sp-wrap'), cat = $('#sp-cat'), q = $('#sp-q'), ring = $('#sp-ring'), timer = $('#sp-timer'), time = $('#sp-time'), pass = $('#sp-pass'), heat = $('#sp-heat');
     var qi = 0, secs = 60, iv = null, visible = false, started = false, ended = false, busy = false, advTO = null, used = false, hintTO = null, plays = 0;
     function stopHint() { wrap.classList.remove('is-hinting'); if (hintTO) { clearTimeout(hintTO); hintTO = null; } }
-    function startHint() { if (used || RM || plays >= 2 || wrap.classList.contains('is-hinting')) return; plays++; wrap.classList.add('is-hinting'); hintTO = setTimeout(stopHint, 2 * 5600); }
+    function startHint() { if (used || RM || wrap.classList.contains('is-hinting')) return; wrap.classList.add('is-hinting'); }
 
     function fmt(s) { return s >= 60 ? '1:00' : '0:' + (s < 10 ? '0' : '') + s; }
     function tick() {
