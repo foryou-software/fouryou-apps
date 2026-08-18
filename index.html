@@ -72,8 +72,27 @@
   --room-spark:linear-gradient(180deg,#F5F6F8 0%,#E7EEF9 16%,#E7EEF9 84%,#F5F6F8 100%);
   --room-orbit:linear-gradient(180deg,#F5F6F8 0%,#EFEAF8 16%,#EFEAF8 84%,#F5F6F8 100%);
   --room-gold:linear-gradient(180deg,#F5F6F8 0%,#F6F0DF 18%,#F6F0DF 82%,#F5F6F8 100%);
+  --sync-bg:#FDF1F3;--spark-bg:#EDF3FD;--orbit-bg:#F4EEFB;--gold-bg:#FCF5E3;
   color-scheme:light;
 }
+/* Tema claro: las ventanas de producto y las fichas de símbolo también en claro */
+:root[data-theme="light"] .win{--txt:#0F1318;--mut:#525E6E;--dim:#7A8595;--line:rgba(15,19,24,.08);--line2:rgba(15,19,24,.12);--line3:rgba(15,19,24,.2);box-shadow:0 30px 80px rgba(15,19,24,.16),0 0 70px rgba(var(--hue-rgb),.10)}
+:root[data-theme="light"] .bat{border-color:#7A8595}
+:root[data-theme="light"] .bat::after{background:#7A8595}
+:root[data-theme="light"] .mode[aria-checked="true"]{background:rgba(var(--hue-rgb),.10)}
+:root[data-theme="light"] .ocard{background:linear-gradient(170deg,#F4EEFB,#FFFFFF 75%);border-color:rgba(138,95,192,.3)}
+:root[data-theme="light"] .ring-c .ph{background:radial-gradient(closest-side,rgba(255,255,255,.96),rgba(255,255,255,0))}
+:root[data-theme="light"] .action{background:rgba(138,95,192,.08)}
+:root[data-theme="light"] .role{background:#F4EEFB}
+:root[data-theme="light"] .role h4{color:#0F1318}
+:root[data-theme="light"] .rbtn.p{color:#FFFFFF;background:#8A5FC0}
+:root[data-theme="light"] .rbtn.s{color:#5A3A8C;border-color:rgba(138,95,192,.5)}
+:root[data-theme="light"] .pill-note{color:#525E6E}
+:root[data-theme="light"] .qbtn.s{color:#1B62C8;border-color:rgba(27,98,200,.4)}
+:root[data-theme="light"] .hint-ptr{background:#0F1318;color:#F2F4F7}
+:root[data-theme="light"] .win-gold .apph .wm{color:#8A6A10}
+:root[data-theme="light"] .gold-win .chip span{background:rgba(255,255,255,.85);color:#8A6A10}
+:root[data-theme="light"] .tile-sq,:root[data-theme="light"] .sp-sq,:root[data-theme="light"] .h-ic,:root[data-theme="light"] .ct .sq,:root[data-theme="light"] .sp-tab .sq,:root[data-theme="light"] .pine-sq,:root[data-theme="light"] .win-badge{border-color:rgba(var(--hue-rgb),.4)}
 
 /* ---------- base ---------- */
 *,*::before,*::after{box-sizing:border-box}
@@ -379,6 +398,14 @@ svg{display:block}
 .trait .l{font-family:var(--f-mono);font-size:11px;flex:none}
 .trait b{display:block;font-weight:600;font-size:15.5px;margin-bottom:4px}
 .trait span.d{display:block;color:var(--mut);font-size:14px;line-height:1.6}
+.stores{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:26px}
+.store{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line3);border-radius:10px;padding:8px 14px 8px 12px;color:var(--txt);background:var(--surface);transition:border-color .3s ease,background-color .3s ease,scale var(--dur-press) var(--ease-out);cursor:default}
+.store:hover{border-color:rgba(var(--hue-rgb),.6);background:rgba(var(--hue-rgb),.06)}
+.store:active{scale:.97}
+.store .st{display:flex;flex-direction:column;line-height:1.1}
+.store small{font-size:9.5px;color:var(--mut);letter-spacing:.02em}
+.store b{font-size:14px;font-weight:600;letter-spacing:-0.01em}
+.store-note{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin-left:4px}
 .room-sync{--hue-rgb:224,90,114;--ink:var(--sync-ink);--acc:var(--sync);background:var(--room-sync)}
 .room-spark{--hue-rgb:47,130,240;--ink:var(--spark-ink);--acc:var(--spark);background:var(--room-spark)}
 .room-orbit{--hue-rgb:168,127,219;--ink:var(--orbit-ink);--acc:var(--orbit);background:var(--room-orbit)}
@@ -898,6 +925,11 @@ svg{display:block}
         <div class="trait rv-1"><span class="l">B</span><div><b><span data-l="es">Del match al plan</span><span data-l="en">From match to plan</span></b><span class="d"><span data-l="es">Swipe privado → match mutuo → conversación guiada → hacerlo realidad → registrarlo en el diario Nuestra historia.</span><span data-l="en">Private swipe → mutual match → guided conversation → make it real → log it in the Our story journal.</span></span></div></div>
         <div class="trait rv-2"><span class="l">C</span><div><b><span data-l="es">Gratis donde importa</span><span data-l="en">Free where it matters</span></b><span class="d"><span data-l="es">Ver un match, leerlo y hablarlo es gratis siempre. Lifetime: Pago único — sin suscripción.</span><span data-l="en">Seeing a match, reading it and talking it out is free, always. Lifetime: One payment — no subscription.</span></span></div></div>
       </div>
+      <div class="stores rv-3" aria-label="Descargar">
+        <a class="store" href="#" role="button" aria-disabled="true" data-store="ios" data-app="sync"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.6c-.02-2.2 1.8-3.26 1.88-3.31-1.03-1.5-2.62-1.71-3.18-1.73-1.35-.14-2.64.8-3.33.8-.69 0-1.75-.78-2.88-.76-1.48.02-2.85.86-3.61 2.19-1.54 2.67-.39 6.63 1.11 8.8.73 1.06 1.6 2.25 2.75 2.21 1.1-.05 1.52-.71 2.85-.71 1.33 0 1.71.71 2.88.69 1.19-.02 1.94-1.08 2.67-2.14.84-1.23 1.19-2.42 1.21-2.48-.03-.01-2.32-.89-2.35-3.56ZM14.2 6.13c.61-.74 1.02-1.76.91-2.78-.88.04-1.94.58-2.57 1.32-.56.65-1.06 1.7-.93 2.7.98.08 1.98-.5 2.59-1.24Z"/></svg><span class="st"><small><span data-l="es">Descargar en</span><span data-l="en">Download on the</span></small><b>App Store</b></span></a>
+        <a class="store" href="#" role="button" aria-disabled="true" data-store="android" data-app="sync"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round" aria-hidden="true"><path d="M5 3.5v17l13.5-8.5L5 3.5Z"/><path d="M5 3.5 15.2 13.7M5 20.5l10.2-10.2"/></svg><span class="st"><small><span data-l="es">Disponible en</span><span data-l="en">Get it on</span></small><b>Google Play</b></span></a>
+        <span class="store-note"><span data-l="es">Muy pronto en las tiendas</span><span data-l="en">Coming soon to the stores</span></span>
+      </div>
     </div>
     <div class="room-demo">
       <div class="win-wrap rv-win" data-tilt>
@@ -985,6 +1017,12 @@ svg{display:block}
         <div class="trait rv-1"><span class="l">B</span><div><b><span data-l="es">Un minuto por pregunta</span><span data-l="en">One minute per question</span></b><span class="d"><span data-l="es">El temporizador existe porque la app gana cuando sueltan el teléfono. Si suena a examen, está mal.</span><span data-l="en">The timer exists because the app wins when you put the phone down. If it sounds like an exam, it's wrong.</span></span></div></div>
         <div class="trait rv-2"><span class="l">C</span><div><b><span data-l="es">Las noches quedan</span><span data-l="en">The nights remain</span></b><span class="d"><span data-l="es">Yo Nunca, Verdad o Reto, y cada noche guardada como un hilo. También en web, además de iOS y Android.</span><span data-l="en">Never Have I Ever, Truth or Dare, and every night saved as a thread. Also on web, besides iOS and Android.</span></span></div></div>
       </div>
+      <div class="stores rv-3" aria-label="Descargar">
+        <a class="store" href="#" role="button" aria-disabled="true" data-store="ios" data-app="spark"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.6c-.02-2.2 1.8-3.26 1.88-3.31-1.03-1.5-2.62-1.71-3.18-1.73-1.35-.14-2.64.8-3.33.8-.69 0-1.75-.78-2.88-.76-1.48.02-2.85.86-3.61 2.19-1.54 2.67-.39 6.63 1.11 8.8.73 1.06 1.6 2.25 2.75 2.21 1.1-.05 1.52-.71 2.85-.71 1.33 0 1.71.71 2.88.69 1.19-.02 1.94-1.08 2.67-2.14.84-1.23 1.19-2.42 1.21-2.48-.03-.01-2.32-.89-2.35-3.56ZM14.2 6.13c.61-.74 1.02-1.76.91-2.78-.88.04-1.94.58-2.57 1.32-.56.65-1.06 1.7-.93 2.7.98.08 1.98-.5 2.59-1.24Z"/></svg><span class="st"><small><span data-l="es">Descargar en</span><span data-l="en">Download on the</span></small><b>App Store</b></span></a>
+        <a class="store" href="#" role="button" aria-disabled="true" data-store="android" data-app="spark"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round" aria-hidden="true"><path d="M5 3.5v17l13.5-8.5L5 3.5Z"/><path d="M5 3.5 15.2 13.7M5 20.5l10.2-10.2"/></svg><span class="st"><small><span data-l="es">Disponible en</span><span data-l="en">Get it on</span></small><b>Google Play</b></span></a>
+        <a class="store" href="#" role="button" aria-disabled="true" data-store="web" data-app="spark"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg><span class="st"><small><span data-l="es">Jugar en</span><span data-l="en">Play on the</span></small><b>Web</b></span></a>
+        <span class="store-note"><span data-l="es">Muy pronto en las tiendas</span><span data-l="en">Coming soon to the stores</span></span>
+      </div>
     </div>
   </div>
 </section>
@@ -1004,6 +1042,11 @@ svg{display:block}
         <div class="trait rv"><span class="l">A</span><div><b><span data-l="es">Ella manda</span><span data-l="en">She rules</span></b><span class="d"><span data-l="es">Quien registra su ciclo es dueña absoluta de sus datos: decide qué comparte campo por campo, revocable al instante. La privacidad nunca es premium.</span><span data-l="en">Whoever tracks their cycle owns their data absolutely: they decide what to share field by field, revocable instantly. Privacy is never premium.</span></span></div></div>
         <div class="trait rv-1"><span class="l">B</span><div><b><span data-l="es">Honestidad primero</span><span data-l="en">Honesty first</span></b><span class="d"><span data-l="es">Modo simétrico honesto para quien acompaña: jamás finge un periodo masculino. Y nunca afirma ella se sentirá X — pregúntale cómo se siente hoy.</span><span data-l="en">An honest symmetric mode for the partner: it never fakes a male period. And it never claims she will feel X — ask her how she feels today.</span></span></div></div>
         <div class="trait rv-2"><span class="l">C</span><div><b><span data-l="es">Para los dos</span><span data-l="en">For both</span></b><span class="d"><span data-l="es">Un solo Lifetime lo desbloquea para ambos — Desbloquear para los dos: un regalo para la relación.</span><span data-l="en">One Lifetime unlocks it for both — Unlock for the two of you: a gift for the relationship.</span></span></div></div>
+      </div>
+      <div class="stores rv-3" aria-label="Descargar">
+        <a class="store" href="#" role="button" aria-disabled="true" data-store="ios" data-app="orbit"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.6c-.02-2.2 1.8-3.26 1.88-3.31-1.03-1.5-2.62-1.71-3.18-1.73-1.35-.14-2.64.8-3.33.8-.69 0-1.75-.78-2.88-.76-1.48.02-2.85.86-3.61 2.19-1.54 2.67-.39 6.63 1.11 8.8.73 1.06 1.6 2.25 2.75 2.21 1.1-.05 1.52-.71 2.85-.71 1.33 0 1.71.71 2.88.69 1.19-.02 1.94-1.08 2.67-2.14.84-1.23 1.19-2.42 1.21-2.48-.03-.01-2.32-.89-2.35-3.56ZM14.2 6.13c.61-.74 1.02-1.76.91-2.78-.88.04-1.94.58-2.57 1.32-.56.65-1.06 1.7-.93 2.7.98.08 1.98-.5 2.59-1.24Z"/></svg><span class="st"><small><span data-l="es">Descargar en</span><span data-l="en">Download on the</span></small><b>App Store</b></span></a>
+        <a class="store" href="#" role="button" aria-disabled="true" data-store="android" data-app="orbit"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round" aria-hidden="true"><path d="M5 3.5v17l13.5-8.5L5 3.5Z"/><path d="M5 3.5 15.2 13.7M5 20.5l10.2-10.2"/></svg><span class="st"><small><span data-l="es">Disponible en</span><span data-l="en">Get it on</span></small><b>Google Play</b></span></a>
+        <span class="store-note"><span data-l="es">Muy pronto en las tiendas</span><span data-l="en">Coming soon to the stores</span></span>
       </div>
     </div>
     <div class="room-demo">
@@ -1343,6 +1386,9 @@ svg{display:block}
     });
     onceVisible(house, 0.4, function () { visible = true; start(); }, function () { visible = false; stop(); });
   })();
+
+  /* ---------- botones de tiendas: por ahora sin destino ---------- */
+  $$('.store[aria-disabled="true"]').forEach(function (a) { a.addEventListener('click', function (e) { e.preventDefault(); }); });
 
   /* ---------- volver arriba ---------- */
   var toTop = $('#fy-top');
