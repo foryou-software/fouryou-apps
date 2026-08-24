@@ -1,8 +1,8 @@
 # FOURYOU · fouryou-apps
 
-La casa de las cuatro apps — **4U Sync**, **4U Spark**, **4U Orbit** y una cuarta luz que ya se está encendiendo.
+Cuatro apps, un mismo carácter — **4U Sync**, **4U Spark**, **4U Orbit** y una cuarta luz que ya se está encendiendo.
 
-Sitio: **https://foryou-software.github.io/fouryou-apps/**
+Sitio: **https://fouryou.io**
 
 Una sola página en HTML + CSS + JS vanilla, sin dependencias ni CDNs (fuentes embebidas). Bilingüe ES/EN, tema oscuro por defecto con tema claro, demos interactivos y animaciones nativas scroll-driven.
 
