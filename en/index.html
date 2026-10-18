@@ -139,6 +139,8 @@ svg{display:block}
 .kicker::before{content:"";height:1px;width:44px;background:var(--rule);flex:none}
 .display{font-family:var(--f-display);font-weight:700;letter-spacing:-0.02em;line-height:1.05;margin:0;text-wrap:balance}
 .lead{color:var(--mut);line-height:1.7;text-wrap:pretty;margin:0}
+.m4u{display:inline-block;width:.74em;height:.74em;vertical-align:-.02em;overflow:visible}
+.wm .a,.tn .a,.foot-col a .a{display:inline-flex;align-items:center;align-self:center}
 .wm{font-family:var(--f-display);font-weight:700;letter-spacing:-0.02em}
 .wm i{font-style:normal}
 .wm .o{display:inline-block;width:.82em;height:.82em;vertical-align:-0.07em;margin:0 .01em 0 .02em}
@@ -813,6 +815,7 @@ svg{display:block}
     <symbol id="sym-orbit" viewBox="0 0 96 96"><circle cx="48" cy="50" r="30" stroke="url(#gOr)" stroke-width="3" fill="none"/><rect x="62" y="20" width="13" height="13" rx="4.5" fill="#A87FDB" stroke="#E2D2F7" stroke-width="1"/></symbol>
     <symbol id="sym-pine" viewBox="0 0 96 96"><path d="M48 10C60.5 12 69 24 69 38.5C69 53 60.5 62.5 48 64.5C35.5 62.5 27 53 27 38.5C27 24 35.5 12 48 10Z" fill="url(#gPi)"/><g clip-path="url(#cPc)" stroke="#3D2E06" stroke-width="1.3" opacity=".55"><path d="M18 26L66 74M28 18L76 66M38 12L86 60M8 36L56 84M-2 46L46 94"/><path d="M78 26L30 74M68 18L20 66M58 12L10 60M88 36L40 84M98 46L50 94"/></g><path d="M48 64.5C46 72 45.8 80 48 89C50.2 80 50 72 48 64.5Z" fill="url(#gPl)"/><path d="M45 64C38.5 68.5 34.5 76 33.5 83C39.5 79 43.8 71.5 45 64Z" fill="url(#gPl)" opacity=".9"/><path d="M51 64C57.5 68.5 61.5 76 62.5 83C56.5 79 52.2 71.5 51 64Z" fill="url(#gPl)" opacity=".9"/></symbol>
     <symbol id="ic-o" viewBox="0 0 32 32"><circle cx="16" cy="17" r="11.5" stroke="currentColor" stroke-width="3" fill="none"/><rect x="21.5" y="4" width="7" height="7" rx="2.4" fill="#A87FDB"/></symbol>
+    <symbol id="sym-4u-wm" viewBox="7 7 50 50"><g fill="none" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor"><path d="M10 10v13a7 7 0 0 0 7 7h21M30 10v37a7 7 0 0 0 7 7h10a7 7 0 0 0 7-7V30"/></g></symbol>
     <symbol id="sym-4u" viewBox="0 0 64 64"><g fill="none" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor"><path d="M10 10v13a7 7 0 0 0 7 7h21M30 10v37a7 7 0 0 0 7 7h10a7 7 0 0 0 7-7V30"/></g></symbol>
     <symbol id="sym-4u-lights" viewBox="0 0 64 64"><g fill="none" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 10v13a7 7 0 0 0 7 7h6.5" stroke="#E05A72"/><path d="M30 10v20h8" stroke="#2F82F0"/><path d="M30 36.5V47a7 7 0 0 0 7 7h1.75" stroke="#A87FDB"/><path d="M45.25 54h1.75a7 7 0 0 0 7-7V30" stroke="#D4A017"/></g></symbol>
   </defs>
@@ -866,7 +869,7 @@ svg{display:block}
         <div class="sp-sym"><span class="sp-halo" aria-hidden="true"></span><span class="sp-sq"><svg class="sym-sync" viewBox="0 0 96 96" fill="none" aria-hidden="true"><rect class="sq-a" x="16" y="18" width="46" height="46" rx="13" fill="rgba(196,58,82,.34)" stroke="#E05A72" stroke-width="1.75"/><rect class="sq-b" x="34" y="32" width="46" height="46" rx="13" fill="rgba(224,90,114,.30)" stroke="#F08DA0" stroke-width="1.75"/><rect class="sq-c" x="34" y="32" width="28" height="32" rx="9" fill="#F7BCC8" opacity=".92"/></svg></span></div>
         <div class="sp-copy">
           <div class="sp-kicker"><span data-l="en">App 01 · Match</span></div>
-          <div class="wm sp-wm"><span class="a">4U</span> Sync</div>
+          <div class="wm sp-wm"><span class="a"><svg class="m4u" aria-hidden="true" focusable="false"><use href="#sym-4u-wm"/></svg><span class="sr-only">4U</span></span> Sync</div>
           <p class="sp-frase"><span data-l="en">The app that says what you don’t dare to say.</span></p>
           <p class="sp-sub"><span data-l="en">Couples, friends and family. Only mutual yeses are revealed.</span></p>
           <a class="sp-link" href="#sync"><span data-l="en">See the app</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -877,7 +880,7 @@ svg{display:block}
         <div class="sp-sym"><span class="sp-halo" aria-hidden="true"></span><span class="sp-sq"><svg class="sym-spark" viewBox="0 0 96 96" fill="none" aria-hidden="true"><rect x="26" y="28" width="44" height="56" rx="12" fill="url(#gEm)" stroke="#2F82F0" stroke-width="1.75"/><g class="embers"><path d="M48 6l3.2 8.4L48 19l-3.2-4.6z" fill="url(#gSh)"/><path d="M35 14l2.6 6.6L35 24l-2.6-3.4z" fill="url(#gSh)" opacity=".85"/><path d="M61 12l2.8 7L61 23l-2.8-4z" fill="url(#gSh)" opacity=".85"/><path d="M42 2l2 5.2L42 10l-2-2.8z" fill="url(#gSh)" opacity=".6"/></g></svg></span></div>
         <div class="sp-copy">
           <div class="sp-kicker"><span data-l="en">App 02 · Ignite</span></div>
-          <div class="wm sp-wm"><span class="a">4U</span> Spark</div>
+          <div class="wm sp-wm"><span class="a"><svg class="m4u" aria-hidden="true" focusable="false"><use href="#sym-4u-wm"/></svg><span class="sr-only">4U</span></span> Spark</div>
           <p class="sp-frase"><span data-l="en">The question that changes the night.</span></p>
           <p class="sp-sub"><span data-l="en">Question cards to truly get to know someone. No account, in 5 seconds.</span></p>
           <a class="sp-link" href="#spark"><span data-l="en">See the app</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -888,7 +891,7 @@ svg{display:block}
         <div class="sp-sym"><span class="sp-halo" aria-hidden="true"></span><span class="sp-sq"><svg class="sym-orbit" viewBox="0 0 96 96" fill="none" aria-hidden="true"><circle cx="48" cy="50" r="30" stroke="url(#gOr)" stroke-width="3" fill="none"/><g class="dot"><rect x="62" y="20" width="13" height="13" rx="4.5" fill="#A87FDB" stroke="#E2D2F7" stroke-width="1"/></g></svg></span></div>
         <div class="sp-copy">
           <div class="sp-kicker"><span data-l="en">App 03 · Attune</span></div>
-          <div class="wm sp-wm"><span class="a">4U</span> Orbit</div>
+          <div class="wm sp-wm"><span class="a"><svg class="m4u" aria-hidden="true" focusable="false"><use href="#sym-4u-wm"/></svg><span class="sr-only">4U</span></span> Orbit</div>
           <p class="sp-frase"><span data-l="en">Learn to be there for her.</span></p>
           <p class="sp-sub"><span data-l="en">For couples: operational empathy, science-based, with absolute respect for privacy.</span></p>
           <a class="sp-link" href="#orbit"><span data-l="en">See the app</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -899,7 +902,7 @@ svg{display:block}
         <div class="sp-sym"><span class="sp-halo" aria-hidden="true"></span><span class="sp-sq"><span class="tease" aria-hidden="true"><svg width="150" height="150" aria-hidden="true"><use href="#sym-pine"/></svg></span></span></div>
         <div class="sp-copy">
           <div class="sp-kicker"><span data-l="en">App 04 · Coming soon</span></div>
-          <div class="wm sp-wm"><span class="a">4U</span> <span class="blur" aria-hidden="true">Xxxx</span></div>
+          <div class="wm sp-wm"><span class="a"><svg class="m4u" aria-hidden="true" focusable="false"><use href="#sym-4u-wm"/></svg><span class="sr-only">4U</span></span> <span class="blur" aria-hidden="true">Xxxx</span></div>
           <p class="sp-frase"><span class="blur" aria-hidden="true">—— ——— —— ———.</span></p>
           <p class="sp-sub"><span data-l="en">The fourth light of the house is already warming up.</span></p>
           <a class="sp-link" href="#proximamente" data-teaser><span data-l="en">In the works</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -909,10 +912,10 @@ svg{display:block}
     </div>
     <button type="button" class="stage-pause" id="fy-pause" aria-label="Pausar la rotación" data-al-es="Pausar la rotación" data-al-en="Pause rotation"><svg class="ic-pause" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg><svg class="ic-play" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4.5v15l12-7.5-12-7.5Z"/></svg></button>
     <div class="stage-dock" role="tablist" aria-label="Apps">
-      <button type="button" class="sp-tab s-sync is-on" role="tab" id="sp-t-sync" aria-selected="true" aria-controls="sp-p-sync" tabindex="0" data-i="0"><span class="sq"><svg width="30" height="30" aria-hidden="true"><use href="#sym-sync"/></svg></span><span class="txt"><span class="tn"><span class="a">4U</span> Sync</span><span class="tv"><span data-l="en">Match</span></span></span><i class="bar" aria-hidden="true"></i></button>
-      <button type="button" class="sp-tab s-spark" role="tab" id="sp-t-spark" aria-selected="false" aria-controls="sp-p-spark" tabindex="-1" data-i="1"><span class="sq"><svg width="30" height="30" aria-hidden="true"><use href="#sym-spark"/></svg></span><span class="txt"><span class="tn"><span class="a">4U</span> Spark</span><span class="tv"><span data-l="en">Ignite</span></span></span><i class="bar" aria-hidden="true"></i></button>
-      <button type="button" class="sp-tab s-orbit" role="tab" id="sp-t-orbit" aria-selected="false" aria-controls="sp-p-orbit" tabindex="-1" data-i="2"><span class="sq"><svg width="30" height="30" aria-hidden="true"><use href="#sym-orbit"/></svg></span><span class="txt"><span class="tn"><span class="a">4U</span> Orbit</span><span class="tv"><span data-l="en">Attune</span></span></span><i class="bar" aria-hidden="true"></i></button>
-      <button type="button" class="sp-tab s-gold" role="tab" id="sp-t-gold" aria-selected="false" aria-controls="sp-p-gold" tabindex="-1" data-i="3" data-teaser><span class="sq"><span class="tease" style="filter:blur(5px);animation:none" aria-hidden="true"><svg width="30" height="30" aria-hidden="true"><use href="#sym-pine"/></svg></span></span><span class="txt"><span class="tn"><span class="a">4U</span> <span class="blur" aria-hidden="true">Xxxx</span></span><span class="tv"><span data-l="en">Coming soon</span></span></span><i class="bar" aria-hidden="true"></i></button>
+      <button type="button" class="sp-tab s-sync is-on" role="tab" id="sp-t-sync" aria-selected="true" aria-controls="sp-p-sync" tabindex="0" data-i="0"><span class="sq"><svg width="30" height="30" aria-hidden="true"><use href="#sym-sync"/></svg></span><span class="txt"><span class="tn"><span class="a"><svg class="m4u" aria-hidden="true" focusable="false"><use href="#sym-4u-wm"/></svg><span class="sr-only">4U</span></span> Sync</span><span class="tv"><span data-l="en">Match</span></span></span><i class="bar" aria-hidden="true"></i></button>
+      <button type="button" class="sp-tab s-spark" role="tab" id="sp-t-spark" aria-selected="false" aria-controls="sp-p-spark" tabindex="-1" data-i="1"><span class="sq"><svg width="30" height="30" aria-hidden="true"><use href="#sym-spark"/></svg></span><span class="txt"><span class="tn"><span class="a"><svg class="m4u" aria-hidden="true" focusable="false"><use href="#sym-4u-wm"/></svg><span class="sr-only">4U</span></span> Spark</span><span class="tv"><span data-l="en">Ignite</span></span></span><i class="bar" aria-hidden="true"></i></button>
+      <button type="button" class="sp-tab s-orbit" role="tab" id="sp-t-orbit" aria-selected="false" aria-controls="sp-p-orbit" tabindex="-1" data-i="2"><span class="sq"><svg width="30" height="30" aria-hidden="true"><use href="#sym-orbit"/></svg></span><span class="txt"><span class="tn"><span class="a"><svg class="m4u" aria-hidden="true" focusable="false"><use href="#sym-4u-wm"/></svg><span class="sr-only">4U</span></span> Orbit</span><span class="tv"><span data-l="en">Attune</span></span></span><i class="bar" aria-hidden="true"></i></button>
+      <button type="button" class="sp-tab s-gold" role="tab" id="sp-t-gold" aria-selected="false" aria-controls="sp-p-gold" tabindex="-1" data-i="3" data-teaser><span class="sq"><span class="tease" style="filter:blur(5px);animation:none" aria-hidden="true"><svg width="30" height="30" aria-hidden="true"><use href="#sym-pine"/></svg></span></span><span class="txt"><span class="tn"><span class="a"><svg class="m4u" aria-hidden="true" focusable="false"><use href="#sym-4u-wm"/></svg><span class="sr-only">4U</span></span> <span class="blur" aria-hidden="true">Xxxx</span></span><span class="tv"><span data-l="en">Coming soon</span></span></span><i class="bar" aria-hidden="true"></i></button>
     </div>
     <div class="stage-line" aria-hidden="true"></div>
   </div>
@@ -928,7 +931,7 @@ svg{display:block}
     <div class="room-copy">
       <div class="ramp" aria-hidden="true"><span style="background:var(--sync-0)"></span><span style="background:var(--sync-1)"></span><span style="background:var(--sync-2)"></span><span style="background:var(--sync-3)"></span><span style="background:var(--sync-4)"></span><span style="background:var(--sync-5)"></span></div>
       <div class="room-label rv"><span data-l="en">App 01 · Match</span></div>
-      <div class="wm room-wm rv-1"><span class="a">4U</span><i>Sync</i></div>
+      <div class="wm room-wm rv-1"><span class="a"><svg class="m4u" aria-hidden="true" focusable="false"><use href="#sym-4u-wm"/></svg><span class="sr-only">4U</span></span><i>Sync</i></div>
       <h2 class="display room-h2 rv-2"><span class="sr-only">4U Sync. </span><span data-l="en">The app that says what you don't dare to say.</span></h2>
       <p class="lead room-p rv-3"><span data-l="en">Not a dating app: a safe space of coincidences for couples, friends and family. Each person privately swipes desire cards — dates, trips, plans, couple intimacy (18+) — and only mutual yeses are revealed.</span></p>
       <div class="traits">
@@ -947,7 +950,7 @@ svg{display:block}
         <div class="win-badge r" aria-hidden="true" style="--wbg:var(--sync-bg);--hue-rgb:224,90,114"><svg width="62" height="62"><use href="#sym-sync"/></svg></div>
         <div class="win win-sync" id="win-sync">
           <div class="sb"><span>19:24</span><span class="bat" style="--b:4px"></span></div>
-          <div class="apph"><div class="wm"><span class="a" style="color:var(--sync)">4U</span><i>Sync</i></div><div class="tag"><span data-l="en">Discover what you both want.</span></div></div>
+          <div class="apph"><div class="wm"><span class="a" style="color:var(--sync)"><svg class="m4u" aria-hidden="true" focusable="false"><use href="#sym-4u-wm"/></svg><span class="sr-only">4U</span></span><i>Sync</i></div><div class="tag"><span data-l="en">Discover what you both want.</span></div></div>
           <div class="modes" role="radiogroup" aria-label="Modo" id="sy-modes" data-al-es="Modo" data-al-en="Mode">
             <button type="button" class="mode" role="radio" aria-checked="true" data-mode="0" style="--mc:var(--sync-3)"><span class="t"><i></i><span data-l="en">Couple</span></span><span class="s"><span data-l="en">Dates, plans and intimacy</span></span></button>
             <button type="button" class="mode" role="radio" aria-checked="false" data-mode="1" style="--mc:var(--sync-amigos)"><span class="t"><i></i><span data-l="en">Friends</span></span><span class="s"><span data-l="en">Plans that finally happen</span></span></button>
@@ -980,7 +983,7 @@ svg{display:block}
         <div class="win-badge l" aria-hidden="true" style="--wbg:var(--spark-bg);--hue-rgb:47,130,240;--float-t:8s;--float-d:.8s"><svg class="sym-spark" width="62" height="62" viewBox="0 0 96 96" fill="none"><rect x="26" y="28" width="44" height="56" rx="12" fill="url(#gEm)" stroke="#2F82F0" stroke-width="1.75"/><g class="embers"><path d="M48 6l3.2 8.4L48 19l-3.2-4.6z" fill="url(#gSh)"/><path d="M35 14l2.6 6.6L35 24l-2.6-3.4z" fill="url(#gSh)" opacity=".85"/><path d="M61 12l2.8 7L61 23l-2.8-4z" fill="url(#gSh)" opacity=".85"/></g></svg></div>
         <div class="win win-spark" id="win-spark">
           <div class="sb"><span>21:07</span><span class="bat" style="--b:5px"></span></div>
-          <div class="apph"><div class="wm"><span class="a" style="color:var(--spark)">4U</span><i>Spark</i></div><div class="tag"><span data-l="en">Light up the conversation.</span></div></div>
+          <div class="apph"><div class="wm"><span class="a" style="color:var(--spark)"><svg class="m4u" aria-hidden="true" focusable="false"><use href="#sym-4u-wm"/></svg><span class="sr-only">4U</span></span><i>Spark</i></div><div class="tag"><span data-l="en">Light up the conversation.</span></div></div>
           <div class="wlabel"><span data-l="en">Who are you playing with?</span></div>
           <div class="modes grid" role="radiogroup" aria-label="Modo" id="sp-modes" data-al-es="Modo" data-al-en="Mode">
             <button type="button" class="mode" role="radio" aria-checked="true" data-mode="0" data-q="0" style="--mc:var(--spark-3)"><span class="t"><i></i><span data-l="en">Party</span></span><span class="s"><span data-l="en">Big group, dares and never-have-I-ever</span></span></button>
@@ -1021,7 +1024,7 @@ svg{display:block}
     <div class="room-copy">
       <div class="ramp" aria-hidden="true"><span style="background:var(--spark-0)"></span><span style="background:var(--spark-1)"></span><span style="background:var(--spark-2)"></span><span style="background:var(--spark-3)"></span><span style="background:var(--spark-4)"></span><span style="background:var(--spark-5)"></span></div>
       <div class="room-label rv"><span data-l="en">App 02 · Ignite</span></div>
-      <div class="wm room-wm rv-1"><span class="a">4U</span><i>Spark</i></div>
+      <div class="wm room-wm rv-1"><span class="a"><svg class="m4u" aria-hidden="true" focusable="false"><use href="#sym-4u-wm"/></svg><span class="sr-only">4U</span></span><i>Spark</i></div>
       <h2 class="display room-h2 rv-2"><span class="sr-only">4U Spark. </span><span data-l="en">The question that changes the night.</span></h2>
       <p class="lead room-p rv-3"><span data-l="en">A question-card game for truly getting to know someone — at a party, on a date, over family dinner or as a couple. Opens and plays in 5 seconds, no account; the phone goes to the center of the table or passes hand to hand.</span></p>
       <div class="traits">
@@ -1046,7 +1049,7 @@ svg{display:block}
     <div class="room-copy">
       <div class="ramp" aria-hidden="true"><span style="background:var(--orbit-0)"></span><span style="background:var(--orbit-1)"></span><span style="background:var(--orbit-2)"></span><span style="background:var(--orbit-3)"></span><span style="background:var(--orbit-4)"></span><span style="background:var(--orbit-5)"></span></div>
       <div class="room-label rv"><span data-l="en">App 03 · Attune</span></div>
-      <div class="wm room-wm rv-1"><span class="a">4U</span><i><span class="sr-only">Orbit</span><span aria-hidden="true" style="display:inline-flex;align-items:center"><svg class="o"><use href="#ic-o"/></svg>rbit</span></i></div>
+      <div class="wm room-wm rv-1"><span class="a"><svg class="m4u" aria-hidden="true" focusable="false"><use href="#sym-4u-wm"/></svg><span class="sr-only">4U</span></span><i><span class="sr-only">Orbit</span><span aria-hidden="true" style="display:inline-flex;align-items:center"><svg class="o"><use href="#ic-o"/></svg>rbit</span></i></div>
       <h2 class="display room-h2 rv-2"><span class="sr-only">4U Orbit. </span><span data-l="en">Learn to be there for her.</span></h2>
       <p class="lead room-p rv-3"><span data-l="en">For couples: it helps the partner understand and anticipate their partner's menstrual cycle and act with empathy — what plan to suggest, when to care, when to give space. Not a medical app nor a cold clinical diary: operational empathy, science-based.</span></p>
       <div class="traits">
@@ -1074,7 +1077,7 @@ svg{display:block}
           </div>
           <div class="win-body" id="ob-body" inert>
           <div class="sb"><span>07:58</span><span class="bat" style="--b:3px"></span></div>
-          <div class="apph"><div class="wm"><span class="a" style="color:var(--orbit)">4U</span><i><span class="sr-only">Orbit</span><span aria-hidden="true" style="display:inline-flex;align-items:center"><svg class="o"><use href="#ic-o"/></svg>rbit</span></i></div><div class="tag"><span data-l="en">In sync, every day.</span></div></div>
+          <div class="apph"><div class="wm"><span class="a" style="color:var(--orbit)"><svg class="m4u" aria-hidden="true" focusable="false"><use href="#sym-4u-wm"/></svg><span class="sr-only">4U</span></span><i><span class="sr-only">Orbit</span><span aria-hidden="true" style="display:inline-flex;align-items:center"><svg class="o"><use href="#ic-o"/></svg>rbit</span></i></div><div class="tag"><span data-l="en">In sync, every day.</span></div></div>
           <div class="ocard">
             <span class="ring" id="ob-ring" role="slider" tabindex="0" aria-valuemin="1" aria-valuemax="28" aria-valuenow="8" aria-valuetext="Día 8 · Folicular" aria-label="Día del ciclo. Arrastra el punto o usa las flechas." data-al-es="Día del ciclo. Arrastra el punto o usa las flechas." data-al-en="Cycle day. Drag the dot or use the arrow keys.">
               <svg width="112" height="112" viewBox="0 0 112 112" aria-hidden="true">
@@ -1116,7 +1119,7 @@ svg{display:block}
       <span class="pine-halo" aria-hidden="true"></span>
       <span class="pine-sq is-idle" id="fy-pinesq"><span class="tease" aria-hidden="true"><svg width="94" height="94"><use href="#sym-pine"/></svg></span></span>
     </div>
-    <div class="wm gold-wm rv"><span class="a">4U</span><span class="blur" aria-hidden="true">Xxxx</span></div>
+    <div class="wm gold-wm rv"><span class="a"><svg class="m4u" aria-hidden="true" focusable="false"><use href="#sym-4u-wm"/></svg><span class="sr-only">4U</span></span><span class="blur" aria-hidden="true">Xxxx</span></div>
     <h2 class="display gold-h2 rv-1"><span data-l="en">The fourth light of the house is already warming up.</span></h2>
     <p class="lead gold-p rv-2"><span data-l="en">Icon and color in plain sight. The rest, not yet.</span></p>
     <div class="gold-win rv-win">
@@ -1154,7 +1157,7 @@ svg{display:block}
   <div class="house rv-win" id="fy-house" data-open="0">
     <div class="hroom r-sync is-open" data-i="0">
       <span class="h-glow" aria-hidden="true"></span>
-      <button type="button" class="h-top" aria-expanded="true" aria-controls="h-b-sync"><span class="h-ic"><svg width="64" height="64" aria-hidden="true"><use href="#sym-sync"/></svg></span><span class="h-name"><span class="wm"><span class="a">4U</span> Sync</span><span class="h-verb"><span data-l="en">Match</span></span></span></button>
+      <button type="button" class="h-top" aria-expanded="true" aria-controls="h-b-sync"><span class="h-ic"><svg width="64" height="64" aria-hidden="true"><use href="#sym-sync"/></svg></span><span class="h-name"><span class="wm"><span class="a"><svg class="m4u" aria-hidden="true" focusable="false"><use href="#sym-4u-wm"/></svg><span class="sr-only">4U</span></span> Sync</span><span class="h-verb"><span data-l="en">Match</span></span></span></button>
       <div class="h-body" id="h-b-sync">
         <p class="h-frase"><span data-l="en">The app that says what you don’t dare to say.</span></p>
         <p class="h-sub"><span data-l="en">Couples, friends and family. Only mutual yeses are revealed.</span></p>
@@ -1163,7 +1166,7 @@ svg{display:block}
     </div>
     <div class="hroom r-spark" data-i="1">
       <span class="h-glow" aria-hidden="true"></span>
-      <button type="button" class="h-top" aria-expanded="false" aria-controls="h-b-spark"><span class="h-ic"><svg width="64" height="64" aria-hidden="true"><use href="#sym-spark"/></svg></span><span class="h-name"><span class="wm"><span class="a">4U</span> Spark</span><span class="h-verb"><span data-l="en">Ignite</span></span></span></button>
+      <button type="button" class="h-top" aria-expanded="false" aria-controls="h-b-spark"><span class="h-ic"><svg width="64" height="64" aria-hidden="true"><use href="#sym-spark"/></svg></span><span class="h-name"><span class="wm"><span class="a"><svg class="m4u" aria-hidden="true" focusable="false"><use href="#sym-4u-wm"/></svg><span class="sr-only">4U</span></span> Spark</span><span class="h-verb"><span data-l="en">Ignite</span></span></span></button>
       <div class="h-body" id="h-b-spark">
         <p class="h-frase"><span data-l="en">The question that changes the night.</span></p>
         <p class="h-sub"><span data-l="en">Party, date, after dinner or as a couple. No account, in 5 seconds.</span></p>
@@ -1172,7 +1175,7 @@ svg{display:block}
     </div>
     <div class="hroom r-orbit" data-i="2">
       <span class="h-glow" aria-hidden="true"></span>
-      <button type="button" class="h-top" aria-expanded="false" aria-controls="h-b-orbit"><span class="h-ic"><svg width="64" height="64" aria-hidden="true"><use href="#sym-orbit"/></svg></span><span class="h-name"><span class="wm"><span class="a">4U</span> Orbit</span><span class="h-verb"><span data-l="en">Attune</span></span></span></button>
+      <button type="button" class="h-top" aria-expanded="false" aria-controls="h-b-orbit"><span class="h-ic"><svg width="64" height="64" aria-hidden="true"><use href="#sym-orbit"/></svg></span><span class="h-name"><span class="wm"><span class="a"><svg class="m4u" aria-hidden="true" focusable="false"><use href="#sym-4u-wm"/></svg><span class="sr-only">4U</span></span> Orbit</span><span class="h-verb"><span data-l="en">Attune</span></span></span></button>
       <div class="h-body" id="h-b-orbit">
         <p class="h-frase"><span data-l="en">Learn to be there for her.</span></p>
         <p class="h-sub"><span data-l="en">For couples: operational empathy, science-based.</span></p>
@@ -1181,7 +1184,7 @@ svg{display:block}
     </div>
     <div class="hroom r-gold" data-i="3" data-teaser>
       <span class="h-glow" aria-hidden="true"></span>
-      <button type="button" class="h-top" aria-expanded="false" aria-controls="h-b-gold"><span class="h-ic"><span class="tease" aria-hidden="true"><svg width="64" height="64" aria-hidden="true"><use href="#sym-pine"/></svg></span></span><span class="h-name"><span class="wm"><span class="a">4U</span> <span class="blur" aria-hidden="true">Xxxx</span><span class="sr-only"><span data-l="en">, coming soon</span></span></span><span class="h-verb"><span data-l="en">Coming soon</span></span></span></button>
+      <button type="button" class="h-top" aria-expanded="false" aria-controls="h-b-gold"><span class="h-ic"><span class="tease" aria-hidden="true"><svg width="64" height="64" aria-hidden="true"><use href="#sym-pine"/></svg></span></span><span class="h-name"><span class="wm"><span class="a"><svg class="m4u" aria-hidden="true" focusable="false"><use href="#sym-4u-wm"/></svg><span class="sr-only">4U</span></span> <span class="blur" aria-hidden="true">Xxxx</span><span class="sr-only"><span data-l="en">, coming soon</span></span></span><span class="h-verb"><span data-l="en">Coming soon</span></span></span></button>
       <div class="h-body" id="h-b-gold">
         <p class="h-frase"><span class="blur" aria-hidden="true">—— ——— —— ———.</span></p>
         <p class="h-sub"><span data-l="en">The fourth light of the house is already warming up.</span></p>
@@ -1204,10 +1207,10 @@ svg{display:block}
     <div class="foot-cols">
       <div class="foot-col">
         <div class="h">Apps</div>
-        <a href="#sync" data-h="sync"><span class="a">4U</span> Sync</a>
-        <a href="#spark" data-h="spark"><span class="a">4U</span> Spark</a>
-        <a href="#orbit" data-h="orbit"><span class="a">4U</span> Orbit</a>
-        <a href="#proximamente" data-h="gold" data-teaser><span class="a">4U</span> <span data-l="en">coming soon</span></a>
+        <a href="#sync" data-h="sync"><span class="a"><svg class="m4u" aria-hidden="true" focusable="false"><use href="#sym-4u-wm"/></svg><span class="sr-only">4U</span></span> Sync</a>
+        <a href="#spark" data-h="spark"><span class="a"><svg class="m4u" aria-hidden="true" focusable="false"><use href="#sym-4u-wm"/></svg><span class="sr-only">4U</span></span> Spark</a>
+        <a href="#orbit" data-h="orbit"><span class="a"><svg class="m4u" aria-hidden="true" focusable="false"><use href="#sym-4u-wm"/></svg><span class="sr-only">4U</span></span> Orbit</a>
+        <a href="#proximamente" data-h="gold" data-teaser><span class="a"><svg class="m4u" aria-hidden="true" focusable="false"><use href="#sym-4u-wm"/></svg><span class="sr-only">4U</span></span> <span data-l="en">coming soon</span></a>
       </div>
       <div class="foot-col">
         <div class="h"><span data-l="en">Availability</span></div>
